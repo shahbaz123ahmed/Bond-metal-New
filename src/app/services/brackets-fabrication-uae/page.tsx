@@ -1,0 +1,449 @@
+
+
+import { ArrowLeft, CheckCircle, Phone, Mail, MessageCircle, Shield, Zap, Award, Wrench, Settings, Target } from 'lucide-react'
+import Link from 'next/link'
+
+export default function BracketsFabricationPage() {
+  const features = [
+    "Precision fabrication up to ±0.1mm tolerance",
+    "Advanced CNC machining capabilities",
+    "Custom design and engineering support",
+    "Wide range of material compatibility",
+    "High-strength welding certifications",
+    "Load-bearing capacity calculations",
+    "Corrosion-resistant coating options",
+    "Fast prototyping and production"
+  ]
+
+  const applications = [
+    { title: "Structural Support", desc: "Heavy-duty brackets for building frames, steel structures, and architectural support systems" },
+    { title: "HVAC Systems", desc: "Mounting brackets for air conditioning units, ductwork, and ventilation equipment" },
+    { title: "Industrial Equipment", desc: "Machine mounting brackets, equipment supports, and production line fixtures" },
+    { title: "Electrical Systems", desc: "Cable tray brackets, panel mounts, and electrical equipment support structures" },
+    { title: "Solar Panel Mounting", desc: "Specialized brackets for solar panel installations and renewable energy systems" },
+    { title: "Signage & Display", desc: "Commercial signage brackets, billboard supports, and display mounting systems" }
+  ]
+
+  const bracketTypes = [
+    {
+      icon: Shield,
+      title: "Angle Brackets",
+      desc: "L-shaped brackets for corner connections and 90-degree mounting",
+      details: ["Standard and custom angles", "Various thickness options", "Galvanized finishes", "Load-tested designs"]
+    },
+    {
+      icon: Zap,
+      title: "Channel Brackets",
+      desc: "U-shaped brackets for linear support and mounting applications",
+      details: ["Continuous support systems", "Multiple mounting points", "Slotted configurations", "Custom lengths available"]
+    },
+    {
+      icon: Award,
+      title: "Plate Brackets",
+      desc: "Flat mounting plates for heavy-duty applications",
+      details: ["High load capacity", "Custom hole patterns", "Reinforced designs", "Multiple material grades"]
+    },
+    {
+      icon: Wrench,
+      title: "Cantilever Brackets",
+      desc: "Extended support brackets for overhanging loads",
+      details: ["Engineering calculations", "Moment resistance", "Reinforced construction", "Safety factor compliance"]
+    },
+    {
+      icon: Settings,
+      title: "Adjustable Brackets",
+      desc: "Variable position brackets for flexible mounting solutions",
+      details: ["Multi-position adjustment", "Locking mechanisms", "Field adjustability", "Maintenance accessibility"]
+    },
+    {
+      icon: Target,
+      title: "Custom Brackets",
+      desc: "Specialized brackets designed for unique applications",
+      details: ["CAD design services", "Prototype development", "Performance testing", "Volume production"]
+    }
+  ]
+
+  const benefits = [
+    {
+      title: "Engineering Excellence",
+      desc: "Professional design and calculation services ensure optimal performance and safety compliance for all applications."
+    },
+    {
+      title: "Material Versatility",
+      desc: "Expert fabrication of steel, stainless steel, aluminum, and specialty alloys with appropriate treatments."
+    },
+    {
+      title: "Quality Certification",
+      desc: "ISO-certified welding processes and quality control systems ensure consistent, reliable products."
+    },
+    {
+      title: "Custom Solutions",
+      desc: "Complete design-to-delivery service for unique bracket requirements and specialized applications."
+    }
+  ]
+
+  const process = [
+    { 
+      step: "Design Consultation", 
+      desc: "Engineering review of load requirements and mounting specifications",
+      details: "Our engineers work with you to understand load requirements, environmental conditions, and installation constraints to design optimal bracket solutions."
+    },
+    { 
+      step: "CAD Development", 
+      desc: "Detailed 3D modeling and engineering calculations for approval",
+      details: "Professional CAD drawings with complete dimensions, material specifications, and structural calculations for your review and approval."
+    },
+    { 
+      step: "Prototype & Testing", 
+      desc: "Sample fabrication and load testing for validation",
+      details: "We fabricate prototypes for complex projects and conduct load testing to verify performance before full production."
+    },
+    { 
+      step: "Production & Delivery", 
+      desc: "Precision fabrication and quality-controlled delivery",
+      details: "Full production using certified processes with comprehensive quality control and timely delivery to your specifications."
+    }
+  ]
+
+  const specifications = [
+    { property: "Material Thickness Range", value: "2mm - 25mm" },
+    { property: "Maximum Bracket Size", value: "2000mm x 1500mm" },
+    { property: "Fabrication Tolerance", value: "±0.1mm precision" },
+    { property: "Load Capacity", value: "Up to 10 tons per bracket" },
+    { property: "Welding Standards", value: "AWS D1.1, ASME certified" },
+    { property: "Material Options", value: "Steel, SS, Aluminum, Alloys" },
+    { property: "Finish Options", value: "Galvanized, Powder Coat, Anodized" },
+    { property: "Production Capacity", value: "1000+ brackets per month" }
+  ]
+
+  const industries = [
+    "Construction & Building",
+    "Oil & Gas Facilities", 
+    "Manufacturing Plants",
+    "Power Generation",
+    "Water Treatment",
+    "HVAC Systems",
+    "Solar Energy",
+    "Telecommunications"
+  ]
+
+  const qualityFeatures = [
+    "AWS certified welders",
+    "Material traceability",
+    "Load testing capabilities",
+    "Dimensional inspection",
+    "Surface quality control",
+    "Corrosion resistance testing",
+    "Fatigue life analysis",
+    "Safety factor verification"
+  ]
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-white">
+      {/* Navigation Bar Space */}
+      <div className="h-24"></div>
+
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-800 to-slate-900">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Back Navigation */}
+          <Link 
+            href="/services" 
+            className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 mb-8 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Services
+          </Link>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Brackets Fabrication <span className="text-orange-500">in UAE</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Professional custom bracket fabrication services with precision engineering and manufacturing. 
+                We design and fabricate heavy-duty mounting brackets, structural supports, and specialized 
+                bracket solutions for construction, industrial, and commercial applications across Dubai and the UAE.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                  Get Custom Quote
+                </button>
+                <button className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300">
+                  View Portfolio
+                </button>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="bg-slate-700 rounded-2xl p-8 border border-slate-600">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-orange-500 mb-2">±0.1mm</div>
+                    <div className="text-gray-300">Precision</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-orange-500 mb-2">10T</div>
+                    <div className="text-gray-300">Load Capacity</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-orange-500 mb-2">25mm</div>
+                    <div className="text-gray-300">Max Thickness</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-orange-500 mb-2">1200+</div>
+                    <div className="text-gray-300">Brackets Made</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Why Choose Our Bracket <span className="text-orange-500">Fabrication Services</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Engineering excellence and precision manufacturing for reliable, high-performance bracket solutions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-orange-500 transition-all duration-300">
+                <h3 className="text-xl font-bold text-orange-500 mb-4">{benefit.title}</h3>
+                <p className="text-gray-300">{benefit.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-center gap-4 bg-slate-800 p-6 rounded-xl border border-slate-700">
+                <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <span className="text-gray-300">{feature}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bracket Types Section */}
+      <section className="py-20 bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Bracket <span className="text-orange-500">Types & Solutions</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Comprehensive range of bracket designs for diverse mounting and support applications
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {bracketTypes.map((bracket, index) => {
+              const IconComponent = bracket.icon
+              return (
+                <div key={index} className="bg-slate-700 p-8 rounded-xl border border-slate-600 hover:border-orange-500 transition-all duration-300 group">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <IconComponent className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-orange-500">{bracket.title}</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6">{bracket.desc}</p>
+                  <ul className="space-y-2">
+                    {bracket.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-400">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Quality Features Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Quality <span className="text-orange-500">Assurance</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Comprehensive quality control ensuring reliable, high-performance bracket solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {qualityFeatures.map((feature, index) => (
+              <div key={index} className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-orange-500 transition-all duration-300 text-center">
+                <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-4" />
+                <h3 className="font-semibold text-white">{feature}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Specifications */}
+      <section className="py-20 bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Technical <span className="text-orange-500">Specifications</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Detailed specifications for our bracket fabrication capabilities
+            </p>
+          </div>
+
+          <div className="bg-slate-700 rounded-xl border border-slate-600 overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+              {specifications.map((spec, index) => (
+                <div key={index} className={`p-6 border-b border-slate-600 ${index % 2 === 1 ? 'md:border-l' : ''} last:border-b-0 md:last:border-b hover:bg-slate-600 transition-colors`}>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300 font-medium">{spec.property}</span>
+                    <span className="text-orange-500 font-semibold">{spec.value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Applications Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Applications Across <span className="text-orange-500">Industries</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Custom bracket solutions for diverse mounting and support requirements
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {applications.map((app, index) => (
+              <div key={index} className="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:border-orange-500 transition-all duration-300 group">
+                <h3 className="text-xl font-bold text-orange-500 mb-4 group-hover:text-orange-400 transition-colors">
+                  {app.title}
+                </h3>
+                <p className="text-gray-300">{app.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Served */}
+      <section className="py-20 bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Industries We <span className="text-orange-500">Serve</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Trusted bracket fabrication services across multiple industry sectors
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {industries.map((industry, index) => (
+              <div key={index} className="bg-slate-700 p-6 rounded-xl text-center hover:bg-slate-600 transition-colors border border-slate-600 hover:border-orange-500">
+                <h3 className="font-semibold text-white">{industry}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">
+              Our Fabrication <span className="text-orange-500">Process</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Systematic approach ensuring optimal design and reliable performance
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {process.map((step, index) => (
+              <div key={index} className={`flex flex-col lg:flex-row gap-8 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className="lg:w-1/3">
+                  <div className="bg-orange-500 rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold text-white mb-4 mx-auto lg:mx-0">
+                    {index + 1}
+                  </div>
+                </div>
+                <div className="lg:w-2/3 bg-slate-800 p-8 rounded-xl border border-slate-700">
+                  <h3 className="text-2xl font-bold text-orange-500 mb-4">{step.step}</h3>
+                  <p className="text-lg text-gray-300 mb-4">{step.desc}</p>
+                  <p className="text-gray-400">{step.details}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready for Custom Bracket Solutions?
+          </h2>
+          <p className="text-xl text-orange-100 mb-8">
+            Get expert bracket fabrication services with engineering support and guaranteed quality. 
+            Contact us for detailed consultation and competitive quotes for your mounting requirements.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
+              <Phone className="w-8 h-8 text-white mx-auto mb-4" />
+              <h3 className="font-semibold text-white mb-2">Call Us</h3>
+              <p className="text-orange-100">+971 50 413 2803</p>
+            </div>
+            <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
+              <Mail className="w-8 h-8 text-white mx-auto mb-4" />
+              <h3 className="font-semibold text-white mb-2">Email Us</h3>
+              <p className="text-orange-100">info@bondmetal.com</p>
+            </div>
+            <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
+              <MessageCircle className="w-8 h-8 text-white mx-auto mb-4" />
+              <h3 className="font-semibold text-white mb-2">WhatsApp</h3>
+              <p className="text-orange-100">Quick Response</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+              Get Free Consultation
+            </button>
+            <Link 
+              href="/contact"
+              className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 inline-block"
+            >
+              Request Quote
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
