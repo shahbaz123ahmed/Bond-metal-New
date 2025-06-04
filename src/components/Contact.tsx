@@ -4,6 +4,12 @@ import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Contact() {
+  const services = [
+    'Glass Installation',
+    'Aluminium Installation',
+    'Metal Cladding',
+  ]
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,31 +18,74 @@ export default function Contact() {
     service: '',
     message: ''
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null,
+    message: string
+  }>({ type: null, message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const data = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit form')
+      }
+      
+      // Reset form on success
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        message: ''
+      })
+      
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been received.'
+      })
+      
+      // Refresh the page after showing success message for 2 seconds
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Failed to submit form'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
+  })
+}
 
-  const services = [
-    "Laser Cutting",
-    "Metal Bending", 
-    "Metal Shearing",
-    "Custom Fabrication",
-    "Welding Services",
-    "Consultation",
-    "Other"
-  ]
 
-  return (
+
+return (
     <section id="contact" className="min-h-screen py-20 bg-slate-900 text-white pt-24">
       <div className="max-w-7xl mx-auto px-4">
         {/* Page Header */}
@@ -190,12 +239,31 @@ export default function Contact() {
                 />
               </div>
 
+              {submitStatus.type && (
+                <div className={`p-4 rounded-lg ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-500/20 text-green-200' 
+                    : 'bg-red-500/20 text-red-200'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3"
+                disabled={isSubmitting}
+                className={`w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               >
-                <Send className="w-5 h-5" />
-                Send Message
+                {isSubmitting ? (
+                  <>Processing...</>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>

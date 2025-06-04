@@ -32,7 +32,7 @@ export default function Navbar() {
 
   const claddingServices = [
     { name: 'ACP Cladding In UAE', href: '/services/acp-cladding.uae/', description: 'Aluminum Composite Panel solutions' },
-    { name: 'Aluminium Cladding', href: '/services/aluminium-cladding', description: 'Premium aluminum cladding systems' },
+    { name: 'Aluminium Cladding in Dubai', href: '/services/aluminium-cladding', description: 'Premium aluminum cladding systems' },
     { name: 'Stainless Steel Cladding', href: '/services/stainless-steel-cladding', description: 'Durable stainless steel solutions' },
   ]
 
@@ -42,8 +42,8 @@ export default function Navbar() {
     { name: 'Brackets Fabrication', href: '/services/brackets-fabrication-uae', description: 'Precision aluminum works' },
     { name: 'Stainless Steel Fabrication', href: '/services/stainless-steel-fabrication', description: 'Premium stainless solutions' },
     { name: 'Glass Fabrication In UAE', href: '/services/glass-fabrication.uae', description: 'Precision CNC services' },
-    { name: 'Aluminium Fabrication Works', href: '/services/aluminium-fabrication-uae', description: 'Professional welding solutions' },
-    { name: 'Handrail Fabrication', href: '/services/handrail-fabrication-uae', description: 'Safety and architectural handrails' },
+    { name: 'Aluminium Fabrication Works In UAE', href: '/services/aluminium-fabrication-uae', description: 'Professional welding solutions' },
+    { name: 'Handrails Fabrication', href: '/services/handrail-fabrication-uae', description: 'Safety and architectural handrails' },
     { name: 'Bollard Design', href: '/services/bollard-design-uae', description: ' provide physical security ' },
     { name: 'Fabrication and Installation of Handrails and Bollards. Dubai and Abu Dhabi', href: '/services/handrails-bollards-fabrication-uae', description: ' provide physical security ' },
     { name: 'Canopy Fabrication', href: '/services/canopy-fabrication-uae', description: 'Weather protection canopy solutions' },
@@ -51,18 +51,17 @@ export default function Navbar() {
     { name: 'Pergola Making', href: '/services/pergola-making-uae', description: 'Custom outdoor living structures' }
   ]
 
+  
+
   const projectCategories = [
-    { name: 'Commercial Projects', href: '/projects/commercial', description: 'Office buildings & retail' },
-    { name: 'Residential Projects', href: '/projects/residential', description: 'Homes & apartments' },
-    { name: 'Industrial Projects', href: '/projects/industrial', description: 'Factories & warehouses' },
-    { name: 'Healthcare Projects', href: '/projects/healthcare', description: 'Hospitals & clinics' },
-    { name: 'Educational Projects', href: '/projects/educational', description: 'Schools & universities' },
-    { name: 'Hospitality Projects', href: '/projects/hospitality', description: 'Hotels & restaurants' }
+    { name: 'Alluminium and Glass Works', href: '/services/aluminium-and-glass-works', description: 'Glass Partitions & Facades' },
+    { name: 'ACP Cladding Works in Dubai', href: '/services/acp-cladding-works-in-dubai', description: 'Commercial Building Elevation & Decorative ACP Panels' },
   ]
 
   const installationServices = [
     { name: 'Glass Installation', href: '/services/glass-installation-uae', description: 'Professional glazing installation' },
-   { name: 'Aluminium Installation', href: '/services/aluminium-installation.uae', description: 'Metal structure installation' },
+    { name: 'Aluminium Installation', href: '/services/aluminium-installation-uae', description: 'Metal structure installation' },
+    { name: 'Fabrication and Installation of ACP and Metal Cladding-Dubai and Abu Dhabi', href: '/services/acp-and-metal-cladding', description: 'Complete Fabrication & Installation Services' }, // Fixed href
   ]
 
   const handleDropdownClick = (dropdown: string) => {

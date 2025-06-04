@@ -53,15 +53,6 @@ export default function Services() {
     }
   ]
 
-  const industries = [
-    "Construction & Infrastructure",
-    "Automotive Manufacturing", 
-    "Aerospace Components",
-    "Architectural Design",
-    "Oil & Gas Industry",
-    "Marine Applications"
-  ]
-
   return (
     <section className="min-h-screen py-20 bg-slate-900 text-white pt-32">
       <div className="max-w-7xl mx-auto px-4">
@@ -121,26 +112,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* Industries We Serve */}
-        <div className="bg-slate-800 rounded-3xl p-12 mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Industries We <span className="text-orange-500">Serve</span>
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Our expertise spans across diverse industries, delivering specialized 
-              solutions that meet unique sector requirements.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {industries.map((industry, index) => (
-              <div key={index} className="bg-slate-700 p-6 rounded-xl text-center hover:bg-slate-600 transition-colors">
-                <h3 className="font-semibold text-white">{industry}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Process Overview */}
         <div className="mb-16">

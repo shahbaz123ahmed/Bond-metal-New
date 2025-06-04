@@ -1,6 +1,6 @@
 'use client'
 
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter, ArrowUp } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, ArrowUp } from 'lucide-react'
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -8,29 +8,24 @@ export default function Footer() {
   }
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: 'http://localhost:3000/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact', href: '/contact/' }
   ]
 
   const services = [
-    'Laser Cutting',
-    'Metal Bending',
-    'Metal Shearing',
-    'Custom Fabrication',
-    'Welding Services',
-    'Project Consultation'
+    { name: 'ACP Cladding in UAE', href: '/services/acp-cladding.uae/'},
+    { name: 'Brackets of Fabrications and Clamps', href: '/services/brackets-fabrication-uae'},
+    { name: 'Stailness Steel Fabrication', href: '/services/stainless-steel-fabrication' },
+    { name: 'Glass Installation in Dubai and Abu Dhabi', href: '/services/glass-installation-uae' },
+   
   ]
 
   const industries = [
-    'Construction',
-    'Automotive',
-    'Aerospace',
-    'Architecture',
-    'Manufacturing',
-    'Oil & Gas'
+     { name: 'Glass Installation', href: '/services/glass-installation-uae'},
+     { name: 'Aluminium Installation', href: '/services/aluminium-installation-uae'},
+      { name: 'Fabrication and Installation of ACP and Metal Cladding-Dubai and Abu Dhabi', href: '/services/acp-and-metal-cladding'},
+  
   ]
 
   return (
@@ -53,18 +48,29 @@ export default function Footer() {
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors">
+              <a 
+                href="tel:+971504132803"
+                className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer"
+              >
                 <Phone className="w-4 h-4 text-orange-500" />
                 <span>+971 50 413 2803</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors">
+              </a>
+              <a 
+                href="mailto:shojahanaa@bondmetalsvalue.com"
+                className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer"
+              >
                 <Mail className="w-4 h-4 text-orange-500" />
                 <span>shojahanaa@bondmetalsvalue.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors">
+              </a>
+              <a 
+                href="https://maps.google.com/?q=Dubai+Industrial+Area,+UAE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer"
+              >
                 <MapPin className="w-4 h-4 text-orange-500" />
                 <span>Dubai Industrial Area, UAE</span>
-              </div>
+              </a>
               <div className="flex items-center gap-3 text-gray-400">
                 <Clock className="w-4 h-4 text-orange-500" />
                 <span>Mon-Fri: 7AM-6PM, Sat: 8AM-2PM</span>
@@ -96,10 +102,13 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className="text-gray-400 hover:text-orange-400 transition-colors duration-300 cursor-pointer flex items-center gap-2 group">
+                  <a 
+                    href={service.href}
+                    className="text-gray-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2 group"
+                  >
                     <span className="w-2 h-2 bg-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {service}
-                  </span>
+                    {service.name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -107,14 +116,17 @@ export default function Footer() {
 
           {/* Industries & Social */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Industries We Serve</h3>
+            <h3 className="text-white font-semibold text-lg mb-6">Installation & Miantenance</h3>
             <ul className="space-y-3 mb-8">
               {industries.map((industry, index) => (
                 <li key={index}>
-                  <span className="text-gray-400 hover:text-orange-400 transition-colors duration-300 cursor-pointer flex items-center gap-2 group">
+                  <a 
+                    href={industry.href}
+                    className="text-gray-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2 group"
+                  >
                     <span className="w-2 h-2 bg-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {industry}
-                  </span>
+                    {industry.name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -123,18 +135,13 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-semibold mb-4">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300">
+                <a href="https://www.facebook.com/bondmetalfabricationllc" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 transition-all duration-300">
+                <a href="https://www.instagram.com/bond.metal/" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 transition-all duration-300">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-700 transition-all duration-300">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-400 transition-all duration-300">
-                  <Twitter className="w-5 h-5" />
-                </a>
+              
               </div>
             </div>
           </div>

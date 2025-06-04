@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Zap, Shield, Target, Wrench, Settings, Award } from 'lucide-react'
+import { ArrowRight, Settings, Award } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -18,38 +18,9 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   const services = [
-    {
-      id: 'laser-cutting',
-      title: 'Laser Cutting',
-      description: 'Precision laser cutting services for metal sheets and plates with clean edges and tight tolerances.',
-      icon: Zap,
-      features: ['High precision cutting', 'Various metal types', 'Complex geometries', 'Clean edge finish'],
-      href: '/services/laser-cutting'
-    },
-    {
-      id: 'metal-bending',
-      title: 'Metal Bending',
-      description: 'Professional metal bending and forming services for structural and architectural applications.',
-      icon: Shield,
-      features: ['CNC press brake', 'Custom angles', 'Large capacity', 'Precision forming'],
-      href: '/services/metal-bending'
-    },
-    {
-      id: 'shearing',
-      title: 'Metal Shearing',
-      description: 'Clean and accurate metal shearing services for various thicknesses and materials.',
-      icon: Target,
-      features: ['Clean cuts', 'Various thicknesses', 'High volume', 'Quick turnaround'],
-      href: '/services/shearing'
-    },
-    {
-      id: 'welding',
-      title: 'Welding Services',
-      description: 'Expert welding services including TIG, MIG, and arc welding for structural applications.',
-      icon: Wrench,
-      features: ['Certified welders', 'Multiple techniques', 'Quality joints', 'Structural welding'],
-      href: '/services/welding'
-    },
+  
+   
+  
     {
       id: 'aluminium-installation',
       title: 'Aluminium Installation',

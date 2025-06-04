@@ -1,175 +1,174 @@
-
-
 import { ArrowLeft, CheckCircle, Phone, Mail, MessageCircle, Shield, Zap, Award, Wrench, Settings, Target } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function GlassInstallationPage() {
   const features = [
-    "Professional glazing installation services",
-    "Curtain wall and facade systems",
-    "Structural glazing applications",
-    "Tempered and laminated glass options",
-    "Double glazing and insulated units",
-    "Waterproofing and weather sealing",
-    "Safety glass compliance standards",
-    "Precision measurement and fitting"
+    "Professional glazing installation services for Glass Installation Dubai and Abu Dhabi",
+    "Curtain wall and facade systems specialized in Glass Installation Dubai and Abu Dhabi",
+    "Structural glazing applications optimized for Glass Installation Dubai and Abu Dhabi",
+    "Tempered and laminated glass options available through Glass Installation Dubai and Abu Dhabi",
+    "Double glazing and insulated units provided via Glass Installation Dubai and Abu Dhabi",
+    "Waterproofing and weather sealing expertise in Glass Installation Dubai and Abu Dhabi",
+    "Safety glass compliance standards met by Glass Installation Dubai and Abu Dhabi",
+    "Precision measurement and fitting guaranteed for Glass Installation Dubai and Abu Dhabi"
   ]
 
   const applications = [
-    { title: "Commercial Buildings", desc: "Office towers, retail centers, corporate headquarters, and commercial facade installations" },
-    { title: "Residential Projects", desc: "Luxury villas, apartments, penthouses, and residential window and door installations" },
-    { title: "Healthcare Facilities", desc: "Hospitals, clinics, medical centers, and specialized healthcare glazing requirements" },
-    { title: "Educational Buildings", desc: "Schools, universities, training centers, and campus glazing installations" },
-    { title: "Industrial Facilities", desc: "Manufacturing plants, warehouses, clean rooms, and industrial glazing applications" },
-    { title: "Hospitality Venues", desc: "Hotels, resorts, restaurants, and hospitality sector glazing solutions" }
+    { title: "Commercial Buildings UAE", desc: "Office towers, retail centers, corporate headquarters, and commercial facade installations through Glass Installation Dubai and Abu Dhabi" },
+    { title: "Residential Projects UAE", desc: "Luxury villas, apartments, penthouses, and residential window and door installations via Glass Installation Dubai and Abu Dhabi" },
+    { title: "Healthcare Facilities UAE", desc: "Hospitals, clinics, medical centers, and specialized healthcare glazing requirements using Glass Installation Dubai and Abu Dhabi" },
+    { title: "Educational Buildings UAE", desc: "Schools, universities, training centers, and campus glazing installations featuring Glass Installation Dubai and Abu Dhabi" },
+    { title: "Industrial Facilities UAE", desc: "Manufacturing plants, warehouses, clean rooms, and industrial glazing applications with Glass Installation Dubai and Abu Dhabi" },
+    { title: "Hospitality Venues UAE", desc: "Hotels, resorts, restaurants, and hospitality sector glazing solutions through Glass Installation Dubai and Abu Dhabi" }
   ]
 
   const glassTypes = [
     {
       icon: Shield,
-      title: "Curtain Wall Systems",
-      desc: "Advanced curtain wall installation for modern building facades",
-      details: ["Structural glazing", "Weather resistance", "Thermal performance", "Aesthetic integration"]
+      title: "Curtain Wall Systems for UAE",
+      desc: "Advanced curtain wall installation for modern building facades using Glass Installation Dubai and Abu Dhabi",
+      details: ["Structural glazing for Glass Installation Dubai and Abu Dhabi", "Weather resistance in UAE climate", "Thermal performance optimization", "Aesthetic integration solutions"]
     },
     {
       icon: Zap,
-      title: "Window Installation",
-      desc: "Professional window glazing for residential and commercial buildings",
-      details: ["Energy efficiency", "Sound insulation", "Security features", "UV protection"]
+      title: "Window Installation for UAE",
+      desc: "Professional window glazing for residential and commercial buildings via Glass Installation Dubai and Abu Dhabi",
+      details: ["Energy efficiency for UAE buildings", "Sound insulation technology", "Security features integration", "UV protection systems"]
     },
     {
       icon: Award,
-      title: "Structural Glazing",
-      desc: "High-performance structural glass systems for modern architecture",
-      details: ["Load-bearing design", "Seamless appearance", "Weather sealing", "Safety compliance"]
+      title: "Structural Glazing for UAE",
+      desc: "High-performance structural glass systems for modern architecture through Glass Installation Dubai and Abu Dhabi",
+      details: ["Load-bearing design for UAE", "Seamless appearance achievement", "Weather sealing excellence", "Safety compliance assurance"]
     },
     {
       icon: Wrench,
-      title: "Shopfront Glazing",
-      desc: "Commercial storefront and retail glazing installations",
-      details: ["Security glass options", "Display optimization", "Easy maintenance", "Brand integration"]
+      title: "Shopfront Glazing for UAE",
+      desc: "Commercial storefront and retail glazing installations using Glass Installation Dubai and Abu Dhabi",
+      details: ["Security glass options for UAE", "Display optimization solutions", "Easy maintenance systems", "Brand integration features"]
     },
     {
       icon: Settings,
-      title: "Skylight Installation",
-      desc: "Natural lighting solutions with skylight and roof glazing",
-      details: ["Natural light optimization", "Weather protection", "Thermal control", "Ventilation options"]
+      title: "Skylight Installation for UAE",
+      desc: "Natural lighting solutions with skylight and roof glazing via Glass Installation Dubai and Abu Dhabi",
+      details: ["Natural light optimization for UAE", "Weather protection systems", "Thermal control technology", "Ventilation options available"]
     },
     {
       icon: Target,
-      title: "Partition Glazing",
-      desc: "Interior glass partition and office glazing systems",
-      details: ["Space optimization", "Sound control", "Privacy options", "Modern aesthetics"]
+      title: "Partition Glazing for UAE",
+      desc: "Interior glass partition and office glazing systems through Glass Installation Dubai and Abu Dhabi",
+      details: ["Space optimization for UAE offices", "Sound control solutions", "Privacy options available", "Modern aesthetic designs"]
     }
   ]
 
   const benefits = [
     {
       title: "UAE Climate Expertise",
-      desc: "Specialized knowledge of UAE weather conditions ensuring optimal glass performance in extreme heat and sandstorms."
+      desc: "Specialized knowledge of UAE weather conditions ensuring optimal glass performance in extreme heat and sandstorms through Glass Installation Dubai and Abu Dhabi."
     },
     {
-      title: "Energy Efficiency",
-      desc: "Advanced glazing solutions reducing cooling costs and improving building energy performance significantly."
+      title: "Superior Energy Efficiency",
+      desc: "Advanced glazing solutions reducing cooling costs and improving building energy performance significantly via Glass Installation Dubai and Abu Dhabi."
     },
     {
-      title: "Safety Compliance",
-      desc: "Full compliance with UAE building codes and international safety standards for all glass installations."
+      title: "Complete Safety Compliance",
+      desc: "Full compliance with UAE building codes and international safety standards for all installations in Glass Installation Dubai and Abu Dhabi."
     },
     {
-      title: "Professional Installation",
-      desc: "Certified installation teams with expertise in precision fitting and weather sealing techniques."
+      title: "Professional Installation Teams",
+      desc: "Certified installation teams with expertise in precision fitting and weather sealing techniques for Glass Installation Dubai and Abu Dhabi."
     }
   ]
 
   const process = [
     { 
-      step: "Site Assessment", 
-      desc: "Comprehensive measurement and structural evaluation",
-      details: "Our specialists conduct detailed site surveys including structural assessments, opening measurements, weather exposure analysis, and building integration requirements for optimal glazing solutions."
+      step: "Site Assessment for UAE", 
+      desc: "Comprehensive measurement and structural evaluation for Glass Installation Dubai and Abu Dhabi",
+      details: "Our specialists conduct detailed site surveys including structural assessments, opening measurements, weather exposure analysis, and building integration requirements for optimal glazing solutions in Glass Installation Dubai and Abu Dhabi."
     },
     { 
-      step: "Design & Specification", 
-      desc: "Custom glazing design with performance specifications",
-      details: "Professional design development including glazing specifications, thermal calculations, structural requirements, and safety compliance verification optimized for UAE climate conditions."
+      step: "Design & Specification for UAE", 
+      desc: "Custom glazing design with performance specifications for Glass Installation Dubai and Abu Dhabi",
+      details: "Professional design development including glazing specifications, thermal calculations, structural requirements, and safety compliance verification optimized for UAE climate conditions through Glass Installation Dubai and Abu Dhabi."
     },
     { 
-      step: "Fabrication & Preparation", 
-      desc: "Precision glass cutting and frame preparation",
-      details: "Expert fabrication including glass cutting, edge finishing, frame preparation, and quality control ensuring perfect fit and compliance with safety and performance standards."
+      step: "Fabrication & Preparation for UAE", 
+      desc: "Precision glass cutting and frame preparation for Glass Installation Dubai and Abu Dhabi",
+      details: "Expert fabrication including glass cutting, edge finishing, frame preparation, and quality control ensuring perfect fit and compliance with safety and performance standards for Glass Installation Dubai and Abu Dhabi."
     },
     { 
-      step: "Installation & Sealing", 
-      desc: "Professional installation with weatherproofing",
-      details: "Complete installation including structural mounting, glazing insertion, weather sealing, and comprehensive testing to ensure optimal performance and safety compliance."
+      step: "Installation & Sealing for UAE", 
+      desc: "Professional installation with weatherproofing for Glass Installation Dubai and Abu Dhabi",
+      details: "Complete installation including structural mounting, glazing insertion, weather sealing, and comprehensive testing to ensure optimal performance and safety compliance in Glass Installation Dubai and Abu Dhabi."
     }
   ]
 
   const specifications = [
-    { property: "Glass Types", value: "Tempered, Laminated, Insulated" },
-    { property: "Thickness Range", value: "6mm - 25mm" },
-    { property: "Maximum Size", value: "3m x 6m panels" },
-    { property: "U-Value Performance", value: "1.2 - 2.8 W/m²K" },
-    { property: "Safety Standards", value: "EN 12150, ASTM C1048" },
-    { property: "Wind Load Capacity", value: "Up to 2.5 kPa" },
-    { property: "Thermal Performance", value: "Low-E coatings available" },
-    { property: "Installation Areas", value: "Dubai, Abu Dhabi, UAE" }
+    { property: "Glass Types for Glass Installation Dubai and Abu Dhabi", value: "Tempered, Laminated, Insulated" },
+    { property: "Thickness Range for Glass Installation Dubai and Abu Dhabi", value: "6mm - 25mm" },
+    { property: "Maximum Size for Glass Installation Dubai and Abu Dhabi", value: "3m x 6m panels" },
+    { property: "U-Value Performance for Glass Installation Dubai and Abu Dhabi", value: "1.2 - 2.8 W/m²K" },
+    { property: "Safety Standards for Glass Installation Dubai and Abu Dhabi", value: "EN 12150, ASTM C1048" },
+    { property: "Wind Load Capacity for Glass Installation Dubai and Abu Dhabi", value: "Up to 2.5 kPa" },
+    { property: "Thermal Performance for Glass Installation Dubai and Abu Dhabi", value: "Low-E coatings available" },
+    { property: "Installation Areas for Glass Installation Dubai and Abu Dhabi", value: "UAE Wide Coverage" }
   ]
 
   const glassOptions = [
     { 
-      type: "Tempered Safety Glass", 
-      benefits: "5x stronger than regular glass, safety compliance, thermal resistance, impact protection",
-      applications: "Curtain walls, shopfronts, high-traffic areas, safety-critical installations"
+      type: "Tempered Safety Glass for UAE", 
+      benefits: "5x stronger than regular glass, safety compliance, thermal resistance, impact protection for Glass Installation Dubai and Abu Dhabi",
+      applications: "Curtain walls, shopfronts, high-traffic areas, safety-critical installations via Glass Installation Dubai and Abu Dhabi"
     },
     { 
-      type: "Laminated Glass", 
-      benefits: "Security features, sound insulation, UV protection, impact resistance",
-      applications: "Security installations, sound barriers, overhead glazing, hurricane protection"
+      type: "Laminated Glass for UAE", 
+      benefits: "Security features, sound insulation, UV protection, impact resistance through Glass Installation Dubai and Abu Dhabi",
+      applications: "Security installations, sound barriers, overhead glazing, hurricane protection using Glass Installation Dubai and Abu Dhabi"
     },
     { 
-      type: "Insulated Glass Units", 
-      benefits: "Energy efficiency, thermal insulation, condensation control, noise reduction",
-      applications: "Commercial buildings, residential windows, climate-controlled environments"
+      type: "Insulated Glass Units for UAE", 
+      benefits: "Energy efficiency, thermal insulation, condensation control, noise reduction via Glass Installation Dubai and Abu Dhabi",
+      applications: "Commercial buildings, residential windows, climate-controlled environments with Glass Installation Dubai and Abu Dhabi"
     },
     { 
-      type: "Low-E Coated Glass", 
-      benefits: "Solar heat rejection, UV protection, energy savings, glare reduction",
-      applications: "UAE climate applications, energy-efficient buildings, solar control systems"
+      type: "Low-E Coated Glass for UAE", 
+      benefits: "Solar heat rejection, UV protection, energy savings, glare reduction through Glass Installation Dubai and Abu Dhabi",
+      applications: "UAE climate applications, energy-efficient buildings, solar control systems using Glass Installation Dubai and Abu Dhabi"
     }
   ]
 
   const industries = [
-    "Commercial Real Estate",
-    "Residential Construction", 
-    "Healthcare Facilities",
-    "Educational Institutions",
-    "Retail & Shopping",
-    "Industrial Buildings",
-    "Government Projects",
-    "Hospitality Sector"
+    "Commercial Real Estate requiring Glass Installation Dubai and Abu Dhabi",
+    "Residential Construction using Glass Installation Dubai and Abu Dhabi", 
+    "Healthcare Facilities utilizing Glass Installation Dubai and Abu Dhabi",
+    "Educational Institutions featuring Glass Installation Dubai and Abu Dhabi",
+    "Retail & Shopping with Glass Installation Dubai and Abu Dhabi",
+    "Industrial Buildings employing Glass Installation Dubai and Abu Dhabi",
+    "Government Projects implementing Glass Installation Dubai and Abu Dhabi",
+    "Hospitality Sector using Glass Installation Dubai and Abu Dhabi"
   ]
 
   const safetyFeatures = [
-    "Impact resistance testing",
-    "Thermal stress analysis",
-    "Structural load verification",
-    "Weather seal integrity",
-    "Safety glass compliance",
-    "Emergency egress requirements",
-    "Fall protection standards",
-    "Seismic resistance design"
+    "Impact resistance testing for Glass Installation Dubai and Abu Dhabi",
+    "Thermal stress analysis in Glass Installation Dubai and Abu Dhabi",
+    "Structural load verification for Glass Installation Dubai and Abu Dhabi",
+    "Weather seal integrity in Glass Installation Dubai and Abu Dhabi",
+    "Safety glass compliance for Glass Installation Dubai and Abu Dhabi",
+    "Emergency egress requirements in Glass Installation Dubai and Abu Dhabi",
+    "Fall protection standards for Glass Installation Dubai and Abu Dhabi",
+    "Seismic resistance design in Glass Installation Dubai and Abu Dhabi"
   ]
 
   const performanceFeatures = [
-    "Solar heat gain control",
-    "Thermal insulation properties",
-    "Sound transmission reduction",
-    "UV radiation protection",
-    "Condensation prevention",
-    "Air infiltration control",
-    "Structural integrity maintenance",
-    "Long-term durability assurance"
+    "Solar heat gain control for Glass Installation Dubai and Abu Dhabi",
+    "Thermal insulation properties in Glass Installation Dubai and Abu Dhabi",
+    "Sound transmission reduction via Glass Installation Dubai and Abu Dhabi",
+    "UV radiation protection through Glass Installation Dubai and Abu Dhabi",
+    "Condensation prevention in Glass Installation Dubai and Abu Dhabi",
+    "Air infiltration control for Glass Installation Dubai and Abu Dhabi",
+    "Structural integrity maintenance in Glass Installation Dubai and Abu Dhabi",
+    "Long-term durability assurance for Glass Installation Dubai and Abu Dhabi"
   ]
 
   return (
@@ -192,45 +191,40 @@ export default function GlassInstallationPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Glass Installation <span className="text-orange-500">in UAE</span>
+                Glass Installation <span className="text-orange-500">Dubai and Abu Dhabi</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Professional glass installation services across Dubai and UAE. We specialize in curtain wall systems, 
+                Professional Glass Installation Dubai and Abu Dhabi services across UAE. We specialize in curtain wall systems, 
                 structural glazing, window installations, and commercial facade solutions engineered for UAE climate 
-                conditions with safety compliance and energy efficiency.
+                conditions with safety compliance and energy efficiency through expert Glass Installation Dubai and Abu Dhabi.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                  Get Site Assessment
-                </button>
-                <button className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300">
-                  View Projects
-                </button>
+                <Link
+                  href="/contact"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center"
+                >
+                  Get Glass Installation Quote
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 text-center"
+                >
+                  View Glass Projects
+                </Link>
               </div>
             </div>
 
+            {/* Replace stats section with image */}
             <div className="relative">
-              <div className="bg-slate-700 rounded-2xl p-8 border border-slate-600">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-orange-500 mb-2">25mm</div>
-                    <div className="text-gray-300">Max Thickness</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-orange-500 mb-2">6mx3m</div>
-                    <div className="text-gray-300">Max Panel Size</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-orange-500 mb-2">2.5kPa</div>
-                    <div className="text-gray-300">Wind Load</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-orange-500 mb-2">500+</div>
-                    <div className="text-gray-300">Installations</div>
-                  </div>
-                </div>
-              </div>
+              <Image 
+                src="/images/glassinst.jpg"
+                alt="Professional Glass Installation Dubai and Abu Dhabi Services in UAE" 
+                width={600}
+                height={400}
+                className="rounded-2xl object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -241,10 +235,10 @@ export default function GlassInstallationPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">
-              Why Choose Our <span className="text-orange-500">Glass Installation</span>
+              Why Choose Our <span className="text-orange-500">Glass Installation Dubai and Abu Dhabi</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Expert glazing services with UAE climate optimization and safety excellence.
+              Expert glazing services with UAE climate optimization and safety excellence through Glass Installation Dubai and Abu Dhabi.
             </p>
           </div>
 
@@ -277,7 +271,7 @@ export default function GlassInstallationPage() {
               Glass Installation Types & <span className="text-orange-500">Solutions</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Comprehensive range of glazing solutions for diverse architectural requirements
+              Comprehensive range of glazing solutions for diverse architectural requirements through Glass Installation Dubai and Abu Dhabi
             </p>
           </div>
 
@@ -316,7 +310,7 @@ export default function GlassInstallationPage() {
               Glass <span className="text-orange-500">Options</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Premium glass types selected for optimal performance in UAE climate conditions
+              Premium glass types selected for optimal performance in UAE climate conditions via Glass Installation Dubai and Abu Dhabi
             </p>
           </div>
 
@@ -350,7 +344,7 @@ export default function GlassInstallationPage() {
               Performance <span className="text-orange-500">Features</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Advanced glazing features ensuring optimal performance in UAE conditions
+              Advanced glazing features ensuring optimal performance in UAE conditions through Glass Installation Dubai and Abu Dhabi
             </p>
           </div>
 
@@ -373,7 +367,7 @@ export default function GlassInstallationPage() {
               Safety <span className="text-orange-500">Features</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Comprehensive safety measures and compliance standards for all installations
+              Comprehensive safety measures and compliance standards for all installations in Glass Installation Dubai and Abu Dhabi
             </p>
           </div>
 
@@ -396,7 +390,7 @@ export default function GlassInstallationPage() {
               Technical <span className="text-orange-500">Specifications</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Detailed specifications for our glass installation capabilities
+              Detailed specifications for our Glass Installation Dubai and Abu Dhabi capabilities
             </p>
           </div>
 
@@ -423,7 +417,7 @@ export default function GlassInstallationPage() {
               Applications Across <span className="text-orange-500">Projects</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Professional glass installation for diverse architectural applications
+              Professional Glass Installation Dubai and Abu Dhabi for diverse architectural applications
             </p>
           </div>
 
@@ -448,7 +442,7 @@ export default function GlassInstallationPage() {
               Industries We <span className="text-orange-500">Serve</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Trusted glass installation services across multiple industry sectors
+              Trusted Glass Installation Dubai and Abu Dhabi services across multiple industry sectors
             </p>
           </div>
 
@@ -470,7 +464,7 @@ export default function GlassInstallationPage() {
               Our Installation <span className="text-orange-500">Process</span>
             </h2>
             <p className="text-xl text-gray-300">
-              Systematic approach ensuring perfect glass installation and superior performance
+              Systematic approach ensuring perfect Glass Installation Dubai and Abu Dhabi and superior performance
             </p>
           </div>
 
@@ -497,40 +491,43 @@ export default function GlassInstallationPage() {
       <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Ready for Professional Glass Installation?
+            Ready for Professional Glass Installation Dubai and Abu Dhabi?
           </h2>
           <p className="text-xl text-orange-100 mb-8">
-            Get expert glass installation services with UAE climate optimization and safety compliance. 
-            Contact us for site assessment and competitive quotes for your glazing requirements.
+            Get expert Glass Installation Dubai and Abu Dhabi services with UAE climate optimization and safety compliance. 
+            Contact us for site assessment and competitive quotes for your Glass Installation Dubai and Abu Dhabi requirements.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
               <Phone className="w-8 h-8 text-white mx-auto mb-4" />
-              <h3 className="font-semibold text-white mb-2">Call Us</h3>
+              <h3 className="font-semibold text-white mb-2">Call for Glass Installation</h3>
               <p className="text-orange-100">+971 50 413 2803</p>
             </div>
             <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
               <Mail className="w-8 h-8 text-white mx-auto mb-4" />
-              <h3 className="font-semibold text-white mb-2">Email Us</h3>
+              <h3 className="font-semibold text-white mb-2">Email for Glass Installation</h3>
               <p className="text-orange-100">info@bondmetal.com</p>
             </div>
             <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
               <MessageCircle className="w-8 h-8 text-white mx-auto mb-4" />
-              <h3 className="font-semibold text-white mb-2">WhatsApp</h3>
+              <h3 className="font-semibold text-white mb-2">WhatsApp Glass Installation</h3>
               <p className="text-orange-100">Quick Response</p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-              Get Site Assessment
-            </button>
+            <Link
+              href="/contact"
+              className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center"
+            >
+              Get Glass Installation Quote
+            </Link>
             <Link 
               href="/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 inline-block"
+              className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 inline-block text-center"
             >
-              Request Quote
+              Request Glass Consultation
             </Link>
           </div>
         </div>
