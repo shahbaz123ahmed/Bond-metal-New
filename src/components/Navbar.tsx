@@ -38,7 +38,7 @@ export default function Navbar() {
 
   const fabricationServices = [
     { name: 'Sheet Bending in U.A.E', href: '/services/sheet-bending-uae', description: 'Custom sheet metal works' },
-    { name: 'Sheet Rolling', href: '/services/steel-rolling-uae', description: 'Structural steel solutions' },
+    { name: 'Steel Rolling', href: '/services/steel-rolling-uae', description: 'Structural steel solutions' },
     { name: 'Brackets Fabrication', href: '/services/brackets-fabrication-uae', description: 'Precision aluminum works' },
     { name: 'Stainless Steel Fabrication', href: '/services/stainless-steel-fabrication', description: 'Premium stainless solutions' },
     { name: 'Glass Fabrication In UAE', href: '/services/glass-fabrication.uae', description: 'Precision CNC services' },
