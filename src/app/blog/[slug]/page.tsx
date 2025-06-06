@@ -1,33 +1,42 @@
-
-import Link from 'next/link'
-import Image from 'next/image'
-import { 
-  ArrowLeft, 
-  ArrowRight,
-  Calendar, 
-  Clock, 
-  User, 
-  Heart, 
-  Share2, 
-  MessageCircle, 
-  Eye, 
-  Tag,
-  CheckCircle,
-  MapPin,
-  Users,
-  DollarSign,
-  Mail,
-  BookOpen,
-  Building2
-} from 'lucide-react'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import dynamic from 'next/dynamic'
 
-// Mock data function that would normally fetch from an API/database
-// This should match the structure from your blog page
-function getBlogPostBySlug(slug: string) {
-  // Sample blog posts - using the same data structure as your blog page
-  const blogPosts = [
+const BlogPostClient = dynamic(() => import('./BlogPostClient'), { ssr: true })
+
+interface ProjectDetails {
+  duration: string
+  location: string
+  team: string
+  year: string
+  value: string
+}
+
+interface BlogPost {
+  id: number
+  title: string
+  slug: string
+  excerpt: string
+  category: string
+  author: string
+  authorRole: string
+  authorBio: string
+  publishDate: string
+  readTime: string
+  image: string
+  client: string
+  projectDetails: ProjectDetails
+  tags: string[]
+  highlights: string[]
+  content: string
+  featured: boolean
+  views: number
+  likes: number
+  comments: number
+}
+
+function getBlogPostBySlug(slug: string): BlogPost | null {
+  const blogPosts: BlogPost[] = [
     {
       id: 1,
       title: 'Premium Aluminum Facade Solutions for Modern Architecture',
@@ -39,7 +48,7 @@ function getBlogPostBySlug(slug: string) {
       authorBio: 'Ahmed Hassan has over 15 years of experience in architectural aluminum systems and facade engineering, with expertise in designing solutions for extreme climate conditions.',
       publishDate: '2023-09-15',
       readTime: '6 min read',
-      image: '/images/blog/facade-solutions.jpg',
+      image: '/images/bond2.webp',
       client: 'Business Bay Development Group',
       projectDetails: {
         duration: '8 months',
@@ -56,42 +65,11 @@ function getBlogPostBySlug(slug: string) {
         'Completed 2 weeks ahead of schedule'
       ],
       content: `
-        <h2>Revolutionizing Commercial Architecture with Premium Aluminum Facades</h2>
-        <p>In the competitive landscape of modern UAE architecture, the exterior facade of a commercial building plays a crucial role in establishing its identity, energy efficiency, and overall value. Bond Metal's premium aluminum facade solutions are at the forefront of this architectural revolution, offering unmatched quality, versatility, and sustainability.</p>
+        <h2>Modern Aluminum Facade Systems in UAE Construction</h2>
+        <p>The aluminum facade industry in the UAE has witnessed unprecedented growth and innovation over the past decade. As the region continues to establish itself as a global architectural hub, the demand for sophisticated, energy-efficient, and aesthetically striking facade solutions has driven significant advancements in aluminum systems technology.</p>
         
-        <p>Our team recently completed a landmark project for a 25-story commercial tower in Dubai's Business Bay, showcasing the transformative power of high-performance aluminum facade systems.</p>
-        
-        <h3>Key Benefits of Our Aluminum Facade Systems</h3>
-        <p>Modern aluminum facade solutions offer numerous advantages over traditional building exteriors, especially in the demanding climate conditions of the UAE:</p>
-        
-        <ul>
-          <li><strong>Superior Weather Resistance</strong>: Engineered to withstand extreme temperature fluctuations, intense UV radiation, and occasional sandstorms without deterioration.</li>
-          <li><strong>Enhanced Energy Efficiency</strong>: Thermal break technology and intelligent design reduce heat transfer, lowering cooling costs by up to 30%.</li>
-          <li><strong>Architectural Versatility</strong>: Allowing architects complete freedom to realize complex designs with curved surfaces, large spans, and intricate patterns.</li>
-          <li><strong>Sustainability Credentials</strong>: Aluminum is 100% recyclable, contributing to green building certifications and reducing the carbon footprint.</li>
-        </ul>
-        
-        <h2>Custom Engineering for UAE Climate Conditions</h2>
-        <p>At Bond Metal, we don't just install facade systems – we engineer complete solutions specifically designed for the unique challenges of the UAE climate. Our aluminum curtain wall systems for the Business Bay project incorporated:</p>
-        
-        <ul>
-          <li>High-performance glass with a solar heat gain coefficient (SHGC) of 0.28</li>
-          <li>Thermally-broken aluminum frames to minimize heat transfer</li>
-          <li>Specialized sealants rated for 25+ years in desert conditions</li>
-          <li>Integrated shading elements to reduce solar impact during peak hours</li>
-        </ul>
-        
-        <h3>Innovative Installation Techniques</h3>
-        <p>The success of any facade project depends heavily on the precision of installation. Our specialized teams employed advanced installation methodologies including:</p>
-        
-        <ul>
-          <li>Digital scanning and modeling to ensure perfect alignment</li>
-          <li>Custom-engineered fixing systems to accommodate building movement</li>
-          <li>Modular pre-assembly to reduce on-site installation time by 40%</li>
-        </ul>
-        
-        <h2>Case Study: Dubai Business Bay Commercial Tower</h2>
-        <p>The recently completed 25-story commercial tower in Business Bay presented several unique challenges:</p>
+        <h3>The Business Bay Development Project</h3>
+        <p>Our recent collaboration with Business Bay Development Group presented a complex challenge that exemplified the cutting-edge capabilities of modern aluminum facade systems. The project requirements included:</p>
         
         <ul>
           <li>Complex geometric facade with varying angles and projections</li>
@@ -117,8 +95,7 @@ function getBlogPostBySlug(slug: string) {
       featured: true,
       views: 2450,
       likes: 78,
-      comments: 23,
-      relatedPosts: ['evolution-acp-cladding-uae', 'quality-standards-curtain-walls']
+      comments: 23
     },
     {
       id: 2,
@@ -131,7 +108,7 @@ function getBlogPostBySlug(slug: string) {
       authorBio: 'Sarah Al Mansoori specializes in advanced cladding systems and has managed over 40 major ACP installation projects across the UAE during her 12-year career.',
       publishDate: '2023-10-02',
       readTime: '8 min read',
-      image: '/images/blog/acp-evolution.jpg',
+      image: '/images/bond3.webp',
       client: 'Emaar Properties',
       projectDetails: {
         duration: '10 months',
@@ -146,6 +123,53 @@ function getBlogPostBySlug(slug: string) {
         
         <h3>The Early Adoption Phase</h3>
         <p>When first introduced to the UAE market in the early 2000s, ACP cladding was primarily valued for its lightweight properties and ease of installation. Early applications focused mostly on commercial buildings where the sleek, modern appearance helped buildings stand out in the rapidly developing urban landscape.</p>
+        
+        <p>However, these early implementations faced significant challenges in the extreme UAE climate, with issues including:</p>
+    
+        <h2>The Fire Safety Revolution in ACP</h2>
+        <p>A transformative moment for the ACP industry came after several high-profile façade fires between 2012-2016. These incidents prompted a complete reevaluation of fire safety standards and led to the UAE Fire and Life Safety Code of Practice establishing some of the strictest requirements globally for exterior cladding materials.</p>
+        
+        <p>Bond Metal was at the forefront of this evolution, developing and implementing:</p>
+        
+        <ul>
+          <li><strong>Fire-Resistant Core Technologies:</strong> Mineral-filled cores that dramatically improve fire performance without compromising on weight or workability</li>
+          <li><strong>Advanced Testing Protocols:</strong> Going beyond regulatory requirements with comprehensive fire simulation testing</li>
+          <li><strong>Retrofit Solutions:</strong> Cost-effective approaches for upgrading existing buildings to meet new safety standards</li>
+        </ul>
+        
+        <h3>The Downtown Dubai Project Challenge</h3>
+        <p>Our recent collaboration with Emaar Properties exemplifies the sophisticated applications of modern ACP systems. The project presented unique challenges:</p>
+        
+        <ul>
+          <li>Complex geometric forms requiring precision fabrication of custom panels</li>
+          <li>Stringent thermal performance requirements to reduce cooling demands</li>
+          <li>Integration with smart building systems and lighting elements</li>
+          <li>Accelerated installation schedule while maintaining occupied areas of the building</li>
+        </ul>
+        
+        <h2>Technical Innovations in Modern ACP Systems</h2>
+        <p>Today's ACP cladding systems have evolved far beyond simple sheet materials. Our Downtown Dubai implementation incorporated several cutting-edge features:</p>
+        
+        <h3>Advanced Material Science</h3>
+        <p>Modern ACP panels utilize sophisticated material compositions that deliver exceptional performance:</p>
+        
+        <ul>
+          <li><strong>PVDF Finishes:</strong> Ultra-durable fluoropolymer coatings with 30+ year color and gloss retention even in extreme desert conditions</li>
+          <li><strong>Multi-Layer Construction:</strong> Engineered layers that optimize strength-to-weight ratios while improving rigidity and impact resistance</li>
+          <li><strong>Nano-Ceramic Treatments:</strong> Surface modifications that enhance scratch resistance and reduce maintenance requirements</li>
+        </ul>
+       
+        <h2>The Future of ACP in UAE Construction</h2>
+        <p>As we look ahead, several emerging trends promise to further transform ACP applications in the UAE:</p>
+        
+        <ul>
+          <li><strong>Integrated Photovoltaics:</strong> ACP systems with embedded solar generation capabilities</li>
+          <li><strong>Self-Cleaning Surfaces:</strong> Hydrophobic nanotechnology coatings that reduce maintenance in dusty environments</li>
+          <li><strong>Bio-Mimetic Designs:</strong> Panels inspired by natural forms that optimize air flow and thermal performance</li>
+          <li><strong>Digital Fabrication:</strong> AI-optimized panel designs that reduce waste while maximizing performance</li>
+        </ul>
+        
+        <p>With continuous innovation and an unwavering commitment to quality, Bond Metal remains at the cutting edge of ACP cladding evolution in the UAE construction landscape, delivering solutions that combine aesthetic excellence with world-class performance.</p>
       `,
       tags: ['ACP', 'UAE Construction', 'Material Innovation', 'Fire Safety', 'Facade Systems'],
       highlights: [
@@ -157,28 +181,270 @@ function getBlogPostBySlug(slug: string) {
       featured: true,
       views: 1870,
       likes: 64,
-      comments: 19,
-      relatedPosts: ['premium-aluminum-facade-solutions', 'fire-resistant-acp-cladding']
+      comments: 19
+    },
+    {
+      id: 3,
+      title: 'Sustainable Metal Solutions for Eco-Friendly Buildings',
+      slug: 'sustainable-metal-solutions',
+      excerpt: 'How innovative metal fabrication techniques are revolutionizing sustainable construction across the UAE, reducing carbon footprints while delivering exceptional performance and aesthetics.',
+      category: 'metal-fabrication',
+      author: 'Mohammed Al Kaabi',
+      authorRole: 'Sustainability Director',
+      authorBio: 'Mohammed Al Kaabi brings over 12 years of expertise in sustainable metal construction technologies. With degrees in Materials Engineering and Environmental Design, he leads Bond Metal\'s green initiatives and has pioneered several award-winning eco-friendly building solutions.',
+      publishDate: '2023-11-05',
+      readTime: '7 min read',
+      image: '/images/bond6.webp',
+      client: 'Masdar City Green Development',
+      projectDetails: {
+        duration: '14 months',
+        location: 'Abu Dhabi, Masdar City',
+        team: '19 specialists',
+        year: '2023',
+        value: 'AED 9.6 million'
+      },
+      tags: ['Sustainable Construction', 'Green Building', 'Recycled Metals', 'Carbon Reduction', 'LEED Certification'],
+      highlights: [
+        'Utilized 78% recycled metal content',
+        'Reduced embodied carbon by 42% compared to conventional methods',
+        'Achieved LEED Platinum certification',
+        'Zero waste manufacturing process'
+      ],
+      content: `
+        <h2>The Rise of Sustainable Metal Solutions in UAE Construction</h2>
+        <p>As the UAE continues to establish itself as a global leader in sustainable development, the construction industry faces mounting pressure to reduce its environmental impact while maintaining the iconic architectural standards the region is known for. Bond Metal's sustainable metal solutions are addressing this challenge head-on, offering innovative fabrication techniques that minimize ecological footprints without compromising on quality, aesthetics, or structural integrity.</p>
+        
+        <p>Our recent collaboration with Masdar City Green Development exemplifies how cutting-edge sustainable metal fabrication can transform eco-conscious design concepts into tangible, high-performing building solutions.</p>
+        
+        <h3>The Environmental Impact of Traditional Metal Construction</h3>
+        <p>Conventional metal fabrication and construction practices carry significant environmental costs:</p>
+        
+        <ul>
+          <li><strong>High Energy Consumption:</strong> Traditional methods often require extensive energy inputs, contributing to higher carbon emissions.</li>
+          <li><strong>Material Waste:</strong> Standardized components can lead to overproduction and excess material waste, with unusable off-cuts and remnants.</li>
+          <li><strong>Limited Recycling:</strong> Not all metal materials are recyclable, and the recycling processes for metals can be energy-intensive.</li>
+          <li><strong>Pollution and Emissions:</strong> Metal fabrication can release pollutants and greenhouse gases, impacting air quality and contributing to climate change.</li>
+        </ul>
+        
+        <h2>Our Sustainable Metal Framework</h2>
+        <p>Bond Metal's sustainable framework addresses each phase of the metal construction lifecycle to maximize ecological benefits while delivering superior performance. For the Masdar City project, we implemented:</p>
+        
+        <ul>
+          <li><strong>Design for Disassembly:</strong> Structures designed to be easily disassembled at the end of their life cycle, facilitating material recovery and reuse.</li>
+          <li><strong>Modular Construction Techniques:</strong> Prefabricated, standardized units that minimize waste and reduce construction time.</li>
+          <li><strong>Advanced Recycling Processes:</strong> State-of-the-art recycling methods that ensure maximum material recovery and minimal energy use.</li>
+          <li><strong>Life Cycle Assessment (LCA) Tools:</strong> Comprehensive LCA tools to evaluate and optimize the environmental performance of our projects from inception to completion.</li>
+        </ul>
+        
+        <h3>Material Innovation: Beyond Traditional Metals</h3>
+        <p>The Masdar City project showcased several groundbreaking material innovations developed by our R&D department:</p>
+        
+        <ul>
+          <li><strong>Recycled Aluminum-Magnesium Alloys</strong>: Offering superior strength-to-weight ratios while utilizing 100% recycled aluminum.</li>
+          <li><strong>Bio-Composite Metal Hybrids</strong>: Metal sheets reinforced with natural fiber composites to enhance thermal performance.</li>
+          <li><strong>Solar-Reflective Finishes</strong>: Heat-reflective coatings that reduce building cooling demands by up to 25%.</li>
+          <li><strong>Pollutant-Capturing Surfaces</strong>: Specialized metal treatments that actively capture and neutralize air pollutants.</li>
+        </ul>
+        
+        <h2>Case Study: Masdar City Innovation Center</h2>
+        <p>The recently completed Innovation Center at Masdar City presented a unique opportunity to demonstrate sustainable metal solutions at scale. The project required:</p>
+        
+        <ul>
+          <li>Innovative design that maximized natural light while minimizing heat gain</li>
+          <li>Use of recycled and eco-friendly materials throughout the construction</li>
+          <li>Integration of renewable energy sources, including solar panels and wind turbines</li>
+          <li>Advanced building management systems for optimized energy and water use</li>
+        </ul>
+        
+        <p>Our solution featured a dynamic double-skin metal facade system using recycled aluminum with bio-composite elements. The system creates a self-ventilating cavity that significantly reduces cooling loads while the outer perforated screens serve both aesthetic and functional purposes—filtering harsh sunlight while maintaining views and natural lighting.</p>
+        
+        <h2>Quantifiable Environmental Benefits</h2>
+        <p>The Masdar City project achieved remarkable ecological milestones through our sustainable metal framework:</p>
+        
+        <ul>
+          <li>Embodied carbon reduced by 42% compared to conventional construction methods</li>
+          <li>Energy consumption during production and construction cut by 35%</li>
+          <li>Water usage reduced by 50% through closed-loop recycling systems</li>
+          <li>Achieved a 90% diversion rate from landfills through recycling and reuse</li>
+        </ul>
+        
+        <h3>Economic Advantages of Sustainable Metal Solutions</h3>
+        <p>Beyond environmental benefits, our sustainable approach delivered significant economic value:</p>
+        
+        <ul>
+          <li><strong>Cost Savings:</strong> Reduced material and energy costs led to overall project savings of 15%.</li>
+          <li><strong>Increased Asset Value:</strong> Sustainable buildings have higher market value and attract premium tenants.</li>
+          <li><strong>Regulatory Compliance:</strong> Proactive adherence to evolving regulations avoids costly retrofits and penalties.</li>
+          <li><strong>Enhanced Brand Image:</strong> Association with cutting-edge sustainable practices boosts corporate reputation.</li>
+        </ul>
+        
+        <h2>The Future of Sustainable Metal Construction</h2>
+        <p>As we look toward the future of construction in the UAE and beyond, several emerging trends in sustainable metal fabrication promise to further revolutionize the industry:</p>
+        
+        <ul>
+          <li><strong>Smart Materials:</strong> Development of metals that can change properties in response to environmental conditions.</li>
+          <li><strong>Biodegradable Composites:</strong> Materials that safely decompose at the end of their life cycle, returning nutrients to the earth.</li>
+          <li><strong>Energy-Harvesting Facades:</strong> Building exteriors that generate energy from wind, solar, and kinetic sources.</li>
+          <li><strong>Modular Reconfiguration:</strong> Buildings that can be easily expanded, reduced, or reconfigured as needs change.</li>
+        </ul>
+        
+        <p>Bond Metal remains committed to leading the sustainable transformation of the UAE construction sector, continually investing in research, technology, and talent to develop the next generation of eco-friendly metal solutions.</p>
+      `,
+      featured: true,
+      views: 1954,
+      likes: 83,
+      comments: 27
+    },
+    {
+      id: 4,
+      title: 'Benefits of Custom Metal Fabrication for UAE Projects',
+      slug: 'benefits-custom-metal-fabrication',
+      excerpt: 'Explore the advantages of choosing custom metal fabrication for your construction and architectural projects in the UAE.',
+      category: 'metal-fabrication',
+      author: 'Mohammed Ali',
+      authorRole: 'Head of Fabrication',
+      authorBio: 'Mohammed Ali brings over 18 years of experience in custom metal fabrication, specializing in bespoke solutions for high-profile architectural projects throughout the UAE and wider Middle East region.',
+      publishDate: '2023-09-25',
+      readTime: '5 min read',
+      image: '/images/bond8.webp',
+      client: 'Dubai Properties',
+      projectDetails: {
+        duration: '6 months',
+        location: 'Dubai Marina',
+        team: '12 specialists',
+        year: '2023',
+        value: 'AED 3.5 million'
+      },
+      content: `
+        <h2>Why Custom Metal Fabrication Makes Sense for UAE Construction Projects</h2>
+        <p>In the competitive and rapidly evolving UAE construction landscape, custom metal fabrication offers significant advantages over standardized, off-the-shelf solutions. As projects in Dubai, Abu Dhabi, and across the Emirates continue to push architectural boundaries, tailored metal components have become essential for achieving both practical functionality and aesthetic distinction.</p>
+        
+        <h3>Precision Engineering for Demanding Environments</h3>
+        <p>The UAE's climate presents unique challenges for building materials. Custom fabrication allows for the precise engineering of metal components that can withstand extreme desert conditions while maintaining structural integrity and appearance over time.</p>
+        
+        <ul>
+          <li><strong>Temperature Resilience</strong>: Components designed specifically to handle thermal expansion in extreme heat, preventing warping and structural issues common with standard solutions.</li>
+          <li><strong>Corrosion Resistance</strong>: Custom treatments and material selection optimized for coastal areas where humidity and salt exposure accelerate deterioration.</li>
+        </ul>
+        
+        <h2>Design Freedom and Architectural Expression</h2>
+        <p>The UAE's skyline is defined by architectural innovation. Custom fabrication removes the constraints of standardized components, enabling the realization of bold design concepts that would otherwise be impossible.</p>
+        
+        <ul>
+          <li><strong>Complex Geometries</strong>: Creation of curved, angular, or irregular shapes that form distinctive architectural features.</li>
+          <li><strong>Integrated Functionality</strong>: Seamless incorporation of lighting, climate control, and smart building technologies directly into structural elements.</li>
+        </ul>
+      `,
+      tags: ['Custom Fabrication', 'Construction', 'UAE Projects', 'Architectural Metal', 'Bespoke Solutions'],
+      highlights: [
+        'Reduced material waste through precision planning',
+        'Accelerated installation timeframes',
+        'Enhanced design flexibility',
+        'Superior performance in extreme climate conditions'
+      ],
+      featured: false,
+      views: 1180,
+      likes: 42,
+      comments: 11
+    },
+    {
+      id: 5,
+      title: 'Fire Safety Standards for Modern ACP Cladding in UAE',
+      slug: 'fire-safety-acp-cladding',
+      excerpt: 'Understanding the latest fire safety regulations for aluminum composite panel cladding in UAE construction and how to ensure compliance.',
+      category: 'acp-cladding',
+      author: 'Sarah Al Mansoori',
+      authorRole: 'Projects Manager',
+      authorBio: 'Sarah Al Mansoori specializes in advanced cladding systems and has managed over 40 major ACP installation projects across the UAE during her 12-year career.',
+      publishDate: '2023-12-10',
+      readTime: '6 min read',
+      image: '/images/bond5.webp',
+      client: 'Dubai Civil Defense',
+      projectDetails: {
+        duration: '8 months',
+        location: 'Dubai & Abu Dhabi',
+        team: '14 specialists',
+        year: '2023',
+        value: 'AED 6.2 million'
+      },
+      tags: ['Fire Safety', 'ACP', 'Building Regulations', 'UAE Standards'],
+      highlights: [
+        'UAE Fire and Life Safety Code 2018 compliance strategies',
+        'Non-combustible core ACP solutions',
+        'Retrofit methodologies for existing buildings',
+        'Testing and certification protocols'
+      ],
+      content: `
+        <h2>Understanding UAE Fire Safety Requirements for ACP Cladding</h2>
+        <p>The implementation of stringent fire safety standards for Aluminum Composite Panel (ACP) cladding in the UAE represents one of the most comprehensive regulatory frameworks globally. Following several high-profile facade fires, the UAE has established world-leading safety requirements that ensure building occupant protection while maintaining architectural excellence.</p>
+        
+        <h3>The Regulatory Evolution</h3>
+        <p>The UAE Fire and Life Safety Code has undergone significant updates since 2018, with particular focus on exterior cladding materials. These regulations now require rigorous testing, certification, and installation protocols for all ACP applications.</p>
+        
+        <ul>
+          <li><strong>Material Classification:</strong> Strict categorization based on fire performance characteristics</li>
+          <li><strong>Installation Standards:</strong> Mandatory fire stops and cavity barriers</li>
+          <li><strong>Testing Protocols:</strong> Comprehensive fire performance evaluation</li>
+          <li><strong>Certification Requirements:</strong> Third-party validation and ongoing compliance monitoring</li>
+        </ul>
+        
+        <h2>Core Material Standards</h2>
+        <p>Modern ACP panels must meet specific core material requirements to ensure optimal fire safety performance. The regulations classify panels based on their combustibility characteristics:</p>
+        
+        <h3>A1 Non-Combustible Panels</h3>
+        <p>These panels feature mineral-filled cores with less than 1% combustible content, providing the highest level of fire safety. Mandatory for buildings over 15 meters in height and critical infrastructure projects.</p>
+        
+        <h3>A2 Limited Combustibility</h3>
+        <p>Featuring mineral cores with strictly controlled combustible content, these panels offer excellent fire performance for mid-rise applications while maintaining design flexibility.</p>
+        
+        <h2>Our Dubai Civil Defense Compliance Project</h2>
+        <p>Working directly with Dubai Civil Defense, Bond Metal developed comprehensive compliance strategies for existing building retrofits and new construction projects. This collaboration resulted in standardized approaches that exceed regulatory requirements while maintaining cost-effectiveness.</p>
+        
+        <ul>
+          <li>Development of retrofit methodologies for 250+ existing buildings</li>
+          <li>Creation of standardized testing protocols</li>
+          <li>Training programs for installation teams and inspectors</li>
+          <li>Ongoing monitoring and maintenance guidelines</li>
+        </ul>
+        
+        <h2>Technical Implementation</h2>
+        <p>Proper implementation of fire-safe ACP systems requires expertise in material selection, installation techniques, and ongoing maintenance. Our approach ensures long-term compliance and safety:</p>
+        
+        <ul>
+          <li><strong>Pre-Installation Assessment:</strong> Comprehensive evaluation of building requirements and risk factors</li>
+          <li><strong>Material Selection:</strong> Optimal panel classification based on building height, occupancy, and use</li>
+          <li><strong>Installation Excellence:</strong> Certified teams trained in fire barrier implementation</li>
+          <li><strong>Documentation:</strong> Complete compliance records for authorities and insurance requirements</li>
+        </ul>
+        
+        <h2>Future of Fire Safety in ACP</h2>
+        <p>The UAE continues to lead global fire safety innovation, with emerging technologies promising even greater protection. Advanced detection systems, smart monitoring, and next-generation materials will further enhance building safety while maintaining architectural freedom.</p>
+        
+        <p>Bond Metal remains committed to exceeding fire safety standards while delivering exceptional design solutions. Our expertise ensures projects meet current regulations while preparing for future requirements.</p>
+      `,
+      featured: false,
+      views: 1650,
+      likes: 58,
+      comments: 15
     }
   ]
 
-  const post = blogPosts.find(post => post.slug === slug)
+  const post = blogPosts.find((post: BlogPost) => post.slug === slug)
   return post || null
 }
 
-// Generate metadata for the page
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = getBlogPostBySlug(params.slug)
   
   if (!post) {
     return {
-      title: 'Post Not Found - Bond Metal Blog',
+      title: 'Post Not Found - Bond Metal BLOG',
       description: 'The requested blog post could not be found.'
     }
   }
 
   return {
-    title: `${post.title} - Bond Metal Blog`,
+    title: `${post.title} - Bond Metal BLOG`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -202,400 +468,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = getBlogPostBySlug(params.slug)
   
-  // Handle 404 case
   if (!post) {
     notFound()
   }
 
-  return (
-    <article className="pt-32 pb-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
-        <div className="mb-8">
-          <Link 
-            href="/blog"
-            className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 font-medium transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Blog
-          </Link>
-        </div>
-
-        {/* Article Header */}
-        <header className="max-w-4xl mx-auto mb-12">
-          {/* Category Tag */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-4 py-2 backdrop-blur-sm">
-              <Tag className="w-4 h-4 text-orange-500" />
-              <span className="text-orange-500 font-medium text-sm capitalize">
-                {post.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-              </span>
-            </div>
-            {post.featured && (
-              <div className="inline-flex items-center gap-2 bg-white/10 border border-slate-700 rounded-full px-4 py-2 backdrop-blur-sm">
-                <Star className="w-4 h-4 text-yellow-400" />
-                <span className="text-gray-300 font-medium text-sm">Featured Article</span>
-              </div>
-            )}
-          </div>
-
-          {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-            {post.title}
-          </h1>
-
-          {/* Excerpt */}
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            {post.excerpt}
-          </p>
-
-          {/* Meta Information */}
-          <div className="flex flex-wrap items-center gap-6 mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-                <User className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="font-medium text-white">{post.author}</div>
-                <div className="text-sm text-gray-400">{post.authorRole}</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-orange-500" />
-                {new Date(post.publishDate).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-orange-500" />
-                {post.readTime}
-              </div>
-              <div className="flex items-center gap-2">
-                <Eye className="w-4 h-4 text-orange-500" />
-                {post.views.toLocaleString()} views
-              </div>
-            </div>
-          </div>
-
-          {/* Project Details Card */}
-          <div className="mb-8 p-6 bg-slate-800/50 rounded-lg border border-slate-700">
-            <h2 className="text-lg font-semibold text-white mb-4">Project Details</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-gray-400">Location</p>
-                  <p className="font-medium text-white">{post.projectDetails.location}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-gray-400">Team</p>
-                  <p className="font-medium text-white">{post.projectDetails.team}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-gray-400">Duration</p>
-                  <p className="font-medium text-white">{post.projectDetails.duration}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-gray-400">Year</p>
-                  <p className="font-medium text-white">{post.projectDetails.year}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Building2 className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-gray-400">Client</p>
-                  <p className="font-medium text-white">{post.client}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <DollarSign className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-gray-400">Project Value</p>
-                  <p className="font-medium text-white">{post.projectDetails.value}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Actions */}
-          <div className="flex items-center gap-4 pb-8 border-b border-slate-800">
-            <button 
-              className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 bg-white/10 text-gray-400 hover:bg-orange-500/20 hover:text-orange-400 border border-slate-700"
-            >
-              <Heart className="w-4 h-4" />
-              {post.likes}
-            </button>
-            
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg border border-slate-700">
-              <MessageCircle className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-400">{post.comments} comments</span>
-            </div>
-
-            <button 
-              className="flex items-center gap-2 px-4 py-2 bg-white/10 text-gray-400 hover:bg-orange-500/20 hover:text-orange-400 rounded-lg font-medium transition-all duration-300 border border-slate-700 hover:border-orange-500"
-            >
-              <Share2 className="w-4 h-4" />
-              Share
-            </button>
-          </div>
-        </header>
-
-        {/* Featured Image */}
-        <div className="max-w-5xl mx-auto mb-12">
-          <div className="relative h-64 sm:h-96 md:h-[500px] rounded-lg overflow-hidden border border-slate-700">
-            <Image 
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
-
-        {/* Main Content Container */}
-        <div className="max-w-4xl mx-auto">
-          {/* Project Highlights */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <CheckCircle className="w-6 h-6 text-orange-500" />
-              Project Highlights
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {post.highlights.map((highlight, index) => (
-                <div key={index} className="flex items-center gap-4 bg-slate-800 p-4 rounded-lg border border-slate-700">
-                  <div className="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-orange-500" />
-                  </div>
-                  <span className="text-white">{highlight}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Article Content */}
-          <div className="prose prose-invert prose-orange max-w-none mb-12">
-            <div 
-              className="text-gray-300 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-          </div>
-
-          {/* Tags */}
-          <div className="mb-12">
-            <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-              <Tag className="w-5 h-5 text-orange-500" />
-              Related Topics
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {post.tags.map((tag, index) => (
-                <Link
-                  key={index}
-                  href={`/blog?tag=${encodeURIComponent(tag.toLowerCase().replace(/\s+/g, '-'))}`}
-                  className="px-4 py-2 bg-orange-500/20 text-orange-400 rounded-lg text-sm font-medium hover:bg-orange-500/30 transition-colors cursor-pointer border border-orange-500/30 hover:border-orange-500"
-                >
-                  #{tag}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Author Bio */}
-          <div className="mb-12 bg-white/10 rounded-lg border border-slate-700 p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <User className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-white font-semibold text-lg mb-2">About {post.author}</h3>
-                <p className="text-gray-400 mb-4 leading-relaxed">{post.authorBio}</p>
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  Contact Author
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Related Posts */}
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-orange-500" />
-                Related Articles
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* This would normally fetch the related posts from your database */}
-                {[1, 2].map((_, index) => (
-                  <div key={index} className="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-orange-500 transition-all duration-300 hover:-translate-y-1">
-                    <div className="relative h-48 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-                      <div className="absolute inset-0 bg-slate-800/20 group-hover:bg-slate-800/40 transition-colors"></div>
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-semibold text-white mb-2 group-hover:text-orange-400 transition-colors line-clamp-2 leading-tight">
-                        Related Article {index + 1}
-                      </h4>
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2 leading-relaxed">
-                        Related content description would go here.
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div className="text-orange-500 group-hover:text-orange-400 transition-colors text-sm font-medium">
-                          Read Article
-                        </div>
-                        <div className="text-orange-500 group-hover:translate-x-1 transition-transform">
-                          <ArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Call to Action */}
-          <div className="mt-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-8 text-center text-white">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Building className="w-6 h-6" />
-              <h3 className="text-2xl font-bold">Need Similar Solutions for Your Project?</h3>
-            </div>
-            <p className="mb-6 opacity-90 max-w-2xl mx-auto">
-              Contact Bond Metal for professional {post.category.replace(/-/g, ' ')} services. 
-              Our expert team is ready to deliver the same quality results for your project.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact"
-                className="bg-white text-orange-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
-              >
-                Get Free Quote
-              </Link>
-              <Link 
-                href="/portfolio"
-                className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-              >
-                View More Projects
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <style jsx>{`
-        .prose h2 {
-          color: white;
-          font-size: 1.75rem;
-          font-weight: bold;
-          margin: 2.5rem 0 1.25rem 0;
-          padding-bottom: 0.5rem;
-          border-bottom: 2px solid #f97316;
-        }
-        
-        .prose h3 {
-          color: #fb923c;
-          font-size: 1.375rem;
-          font-weight: bold;
-          margin: 2rem 0 1rem 0;
-        }
-        
-        .prose p {
-          margin: 1.25rem 0;
-          line-height: 1.8;
-        }
-        
-        .prose ul, .prose ol {
-          margin: 1.5rem 0;
-          padding-left: 1.5rem;
-        }
-        
-        .prose li {
-          margin: 0.75rem 0;
-          line-height: 1.6;
-        }
-        
-        .prose strong {
-          color: #fb923c;
-          font-weight: 600;
-        }
-        
-        .prose ul li::marker {
-          color: #f97316;
-        }
-        
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
-    </article>
-  )
-}
-
-// Additional components used in the page
-function Star(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
-  )
-}
-
-function Building(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-      <path d="M9 22v-4h6v4" />
-      <path d="M8 6h.01" />
-      <path d="M16 6h.01" />
-      <path d="M12 6h.01" />
-      <path d="M12 10h.01" />
-      <path d="M12 14h.01" />
-      <path d="M16 10h.01" />
-      <path d="M16 14h.01" />
-      <path d="M8 10h.01" />
-      <path d="M8 14h.01" />
-    </svg>
-  )
+  return <BlogPostClient post={post} />
 }
