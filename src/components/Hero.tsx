@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Users, ChevronDown, Play, Award, Clock } from 'lucide-react'
+import { Users, ChevronDown, Award, Clock } from 'lucide-react'
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -80,19 +80,7 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* CTA Buttons - Scale in */}
-          <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 delay-1200 ${
-            isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}>
-            <button className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-3 shadow-lg w-full sm:w-auto justify-center">
-              Explore Our Services
-              <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
-            </button>
-            <button className="group bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-slate-900 px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 flex items-center gap-3 backdrop-blur-sm w-full sm:w-auto justify-center">
-              <Play className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-              Watch Our Work
-            </button>
-          </div>
+          
 
           {/* Stats Grid - Stagger animation */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">

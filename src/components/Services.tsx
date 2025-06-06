@@ -140,13 +140,7 @@ export default function Services() {
 
         {/* Call to Action */}
         <div className="text-center bg-gradient-to-r from-orange-500 to-orange-600 rounded-3xl p-12">
-          <h3 className="text-3xl font-bold text-white mb-4">
-            Ready to Start Your Project?
-          </h3>
-          <p className="text-orange-100 mb-8 max-w-2xl mx-auto">
-            Get a free consultation and quote for your metal fabrication needs. 
-            Our experts are ready to bring your vision to life.
-          </p>
+         
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
               Get Free Quote

@@ -262,24 +262,7 @@ export default function Videos() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className={`text-center bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-            Ready to See Your Project Come to Life?
-          </h3>
-          <p className="text-sm sm:text-base text-orange-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-            Experience the same level of precision and quality showcased in our videos. 
-            Let&apos;s discuss your metal fabrication needs today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
-            <button className="bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-              Start Your Project
-            </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base transition-all duration-300">
-              Download Portfolio
-            </button>
-          </div>
-        </div>
+        
       </div>
     </section>
   )

@@ -51,8 +51,6 @@ export default function Navbar() {
     { name: 'Pergola Making', href: '/services/pergola-making-uae', description: 'Custom outdoor living structures' }
   ]
 
-  
-
   const projectCategories = [
     { name: 'Alluminium and Glass Works', href: '/services/aluminium-and-glass-works', description: 'Glass Partitions & Facades' },
     { name: 'ACP Cladding Works in Dubai', href: '/services/acp-cladding-works-in-dubai', description: 'Commercial Building Elevation & Decorative ACP Panels' },
@@ -61,7 +59,7 @@ export default function Navbar() {
   const installationServices = [
     { name: 'Glass Installation', href: '/services/glass-installation-uae', description: 'Professional glazing installation' },
     { name: 'Aluminium Installation', href: '/services/aluminium-installation-uae', description: 'Metal structure installation' },
-    { name: 'Fabrication and Installation of ACP and Metal Cladding-Dubai and Abu Dhabi', href: '/services/acp-and-metal-cladding', description: 'Complete Fabrication & Installation Services' }, // Fixed href
+    { name: 'Fabrication and Installation of ACP and Metal Cladding-Dubai and Abu Dhabi', href: '/services/acp-and-metal-cladding', description: 'Complete Fabrication & Installation Services' },
   ]
 
   const handleDropdownClick = (dropdown: string) => {
@@ -70,6 +68,18 @@ export default function Navbar() {
 
   const closeDropdown = () => {
     setActiveDropdown(null)
+  }
+
+  // Handle URL change only (no navigation)
+  const handleUrlChange = (url: string) => {
+    window.history.pushState({}, '', url)
+  }
+
+  // Handle arrow click to prevent navigation
+  const handleArrowClick = (e: React.MouseEvent, dropdown: string) => {
+    e.preventDefault()
+    e.stopPropagation()
+    handleDropdownClick(dropdown)
   }
 
   return (
@@ -94,35 +104,42 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/90 backdrop-blur-sm'
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-200 ${
+        isScrolled ? 'bg-white/95 shadow-lg' : 'bg-white/90'
       }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center group">
-              <div className="text-2xl font-bold transition-all duration-300 group-hover:scale-105">
-                <span className="text-slate-900 transition-colors duration-300 group-hover:text-slate-700">Bond</span>
-                <span className="text-orange-500 transition-all duration-300 group-hover:text-orange-600 group-hover:drop-shadow-lg">Metal</span>
+              <div className="text-2xl font-bold transition-all duration-200 group-hover:scale-105">
+                <span className="text-slate-900 transition-colors duration-200 group-hover:text-slate-700">Bond</span>
+                <span className="text-orange-500 transition-all duration-200 group-hover:text-orange-600">Metal</span>
               </div>
-              
-              {/* Optional: Add a subtle underline effect */}
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300 group-hover:w-full"></div>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {/* Cladding Dropdown */}
               <div className="relative dropdown-container">
-                <button 
-                  onClick={() => handleDropdownClick('cladding')}
-                  className="flex items-center gap-1 text-slate-700 hover:text-orange-500 font-medium transition-colors"
-                >
-                  Cladding
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                    activeDropdown === 'cladding' ? 'rotate-180' : ''
-                  }`} />
-                </button>
+                <div className="flex items-center">
+                  <button 
+                    onClick={() => handleUrlChange('/services/cladding')}
+                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  >
+                    Cladding
+                  </button>
+                  <button 
+                    onClick={(e) => handleArrowClick(e, 'cladding')}
+                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
+                    aria-expanded={activeDropdown === 'cladding'}
+                    aria-haspopup="true"
+                    aria-label="Show cladding services"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      activeDropdown === 'cladding' ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                </div>
                 
                 {activeDropdown === 'cladding' && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -135,7 +152,7 @@ export default function Navbar() {
                         <Link
                           key={service.href}
                           href={service.href}
-                          className="block px-4 py-3 hover:bg-orange-50 transition-colors group"
+                          className="block px-4 py-3 hover:bg-orange-50 transition-colors duration-200 group"
                           onClick={closeDropdown}
                         >
                           <div className="font-medium text-slate-900 group-hover:text-orange-600">
@@ -153,15 +170,25 @@ export default function Navbar() {
 
               {/* Fabrication Services Dropdown */}
               <div className="relative dropdown-container">
-                <button 
-                  onClick={() => handleDropdownClick('fabrication')}
-                  className="flex items-center gap-1 text-slate-700 hover:text-orange-500 font-medium transition-colors"
-                >
-                  Fabrication Services
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                    activeDropdown === 'fabrication' ? 'rotate-180' : ''
-                  }`} />
-                </button>
+                <div className="flex items-center">
+                  <button 
+                    onClick={() => handleUrlChange('/services/fabrication')}
+                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  >
+                    Fabrication Services
+                  </button>
+                  <button 
+                    onClick={(e) => handleArrowClick(e, 'fabrication')}
+                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
+                    aria-expanded={activeDropdown === 'fabrication'}
+                    aria-haspopup="true"
+                    aria-label="Show fabrication services"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      activeDropdown === 'fabrication' ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                </div>
                 
                 {activeDropdown === 'fabrication' && (
                   <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -169,12 +196,12 @@ export default function Navbar() {
                       <h3 className="font-semibold text-slate-900 mb-1">Fabrication Services</h3>
                       <p className="text-sm text-gray-600">Custom metal fabrication solutions</p>
                     </div>
-                    <div className="py-2 grid grid-cols-2 gap-x-4">
+                    <div className="py-2 grid grid-cols-2 gap-x-4 max-h-96 overflow-y-auto">
                       {fabricationServices.map((service) => (
                         <Link
                           key={service.href}
                           href={service.href}
-                          className="block px-4 py-3 hover:bg-orange-50 transition-colors group"
+                          className="block px-4 py-3 hover:bg-orange-50 transition-colors duration-200 group"
                           onClick={closeDropdown}
                         >
                           <div className="font-medium text-slate-900 group-hover:text-orange-600 text-sm">
@@ -192,15 +219,25 @@ export default function Navbar() {
 
               {/* Our Projects Dropdown */}
               <div className="relative dropdown-container">
-                <button 
-                  onClick={() => handleDropdownClick('projects')}
-                  className="flex items-center gap-1 text-slate-700 hover:text-orange-500 font-medium transition-colors"
-                >
-                  Our Projects
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                    activeDropdown === 'projects' ? 'rotate-180' : ''
-                  }`} />
-                </button>
+                <div className="flex items-center">
+                  <button 
+                    onClick={() => handleUrlChange('/services/projects')}
+                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  >
+                    Our Projects
+                  </button>
+                  <button 
+                    onClick={(e) => handleArrowClick(e, 'projects')}
+                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
+                    aria-expanded={activeDropdown === 'projects'}
+                    aria-haspopup="true"
+                    aria-label="Show project categories"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      activeDropdown === 'projects' ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                </div>
                 
                 {activeDropdown === 'projects' && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -213,7 +250,7 @@ export default function Navbar() {
                         <Link
                           key={category.href}
                           href={category.href}
-                          className="block px-4 py-3 hover:bg-orange-50 transition-colors group"
+                          className="block px-4 py-3 hover:bg-orange-50 transition-colors duration-200 group"
                           onClick={closeDropdown}
                         >
                           <div className="font-medium text-slate-900 group-hover:text-orange-600">
@@ -231,15 +268,25 @@ export default function Navbar() {
 
               {/* Installation & Maintenance Dropdown */}
               <div className="relative dropdown-container">
-                <button 
-                  onClick={() => handleDropdownClick('installation')}
-                  className="flex items-center gap-1 text-slate-700 hover:text-orange-500 font-medium transition-colors"
-                >
-                  Installation & Maintenance
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                    activeDropdown === 'installation' ? 'rotate-180' : ''
-                  }`} />
-                </button>
+                <div className="flex items-center">
+                  <button 
+                    onClick={() => handleUrlChange('/services/installation')}
+                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  >
+                    Installation & Maintenance
+                  </button>
+                  <button 
+                    onClick={(e) => handleArrowClick(e, 'installation')}
+                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
+                    aria-expanded={activeDropdown === 'installation'}
+                    aria-haspopup="true"
+                    aria-label="Show installation services"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      activeDropdown === 'installation' ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                </div>
                 
                 {activeDropdown === 'installation' && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -252,7 +299,7 @@ export default function Navbar() {
                         <Link
                           key={service.href}
                           href={service.href}
-                          className="block px-4 py-3 hover:bg-orange-50 transition-colors group"
+                          className="block px-4 py-3 hover:bg-orange-50 transition-colors duration-200 group"
                           onClick={closeDropdown}
                         >
                           <div className="font-medium text-slate-900 group-hover:text-orange-600">
@@ -270,23 +317,33 @@ export default function Navbar() {
 
               <Link 
                 href="/about" 
-                className="text-slate-700 hover:text-orange-500 font-medium transition-colors"
+                className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
               >
                 About Us
               </Link>
 
               <Link 
                 href="/contact" 
-                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200"
               >
                 Contact Us
+              </Link>
+
+              {/* Blog Link */}
+              <Link 
+                href="/blog" 
+                className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+              >
+                Blog
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 focus:outline-none focus:ring-2 focus:ring-orange-400 rounded"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-expanded={isMobileMenuOpen}
+              aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6 text-slate-700" />
@@ -302,12 +359,20 @@ export default function Navbar() {
           <div className="lg:hidden bg-white border-t border-gray-200">
             <div className="px-4 py-6 space-y-4">
               <div className="space-y-2">
-                <div className="font-medium text-slate-900 py-2">Cladding</div>
+                <button
+                  onClick={() => {
+                    handleUrlChange('/services/cladding')
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                >
+                  Cladding
+                </button>
                 {claddingServices.map((service) => (
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4"
+                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -316,12 +381,20 @@ export default function Navbar() {
               </div>
 
               <div className="space-y-2">
-                <div className="font-medium text-slate-900 py-2">Fabrication Services</div>
+                <button
+                  onClick={() => {
+                    handleUrlChange('/services/fabrication')
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                >
+                  Fabrication Services
+                </button>
                 {fabricationServices.map((service) => (
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4"
+                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -330,12 +403,20 @@ export default function Navbar() {
               </div>
 
               <div className="space-y-2">
-                <div className="font-medium text-slate-900 py-2">Our Projects</div>
+                <button
+                  onClick={() => {
+                    handleUrlChange('/services/projects')
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                >
+                  Our Projects
+                </button>
                 {projectCategories.map((category) => (
                   <Link
                     key={category.href}
                     href={category.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4"
+                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {category.name}
@@ -344,12 +425,20 @@ export default function Navbar() {
               </div>
 
               <div className="space-y-2">
-                <div className="font-medium text-slate-900 py-2">Installation & Maintenance</div>
+                <button
+                  onClick={() => {
+                    handleUrlChange('/services/installation')
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                >
+                  Installation & Maintenance
+                </button>
                 {installationServices.map((service) => (
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4"
+                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -359,7 +448,7 @@ export default function Navbar() {
 
               <Link 
                 href="/about" 
-                className="block text-slate-700 hover:text-orange-500 font-medium py-2"
+                className="block text-slate-700 hover:text-orange-500 font-medium py-2 transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About Us
@@ -367,11 +456,13 @@ export default function Navbar() {
 
               <Link 
                 href="/contact" 
-                className="block bg-orange-500 text-white px-6 py-3 rounded-full font-semibold text-center mt-4"
+                className="block bg-orange-500 text-white px-6 py-3 rounded-full font-semibold text-center mt-4 transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact Us
               </Link>
+
+          
             </div>
           </div>
         )}

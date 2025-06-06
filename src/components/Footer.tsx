@@ -1,6 +1,6 @@
 'use client'
 
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, ArrowUp } from 'lucide-react'
+import { Phone, Mail, Clock, Facebook, Instagram, ArrowUp } from 'lucide-react'
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -8,24 +8,23 @@ export default function Footer() {
   }
 
   const quickLinks = [
-    { name: 'Home', href: 'http://localhost:3000/' },
+    { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact', href: '/contact/' }
+    { name: 'Blog', href: '/blog' }, // Add this line
+    { name: 'Contact', href: '/contact/' },
   ]
 
   const services = [
     { name: 'ACP Cladding in UAE', href: '/services/acp-cladding.uae/'},
     { name: 'Brackets of Fabrications and Clamps', href: '/services/brackets-fabrication-uae'},
-    { name: 'Stailness Steel Fabrication', href: '/services/stainless-steel-fabrication' },
+    { name: 'Stainless Steel Fabrication', href: '/services/stainless-steel-fabrication' },
     { name: 'Glass Installation in Dubai and Abu Dhabi', href: '/services/glass-installation-uae' },
-   
   ]
 
   const industries = [
      { name: 'Glass Installation', href: '/services/glass-installation-uae'},
      { name: 'Aluminium Installation', href: '/services/aluminium-installation-uae'},
-      { name: 'Fabrication and Installation of ACP and Metal Cladding-Dubai and Abu Dhabi', href: '/services/acp-and-metal-cladding'},
-  
+     { name: 'Fabrication and Installation of ACP and Metal Cladding-Dubai and Abu Dhabi', href: '/services/acp-and-metal-cladding'},
   ]
 
   return (
@@ -51,31 +50,37 @@ export default function Footer() {
               <a 
                 href="tel:+971504132803"
                 className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer"
+                aria-label="Call us at +971 50 413 2803"
               >
                 <Phone className="w-4 h-4 text-orange-500" />
                 <span>+971 50 413 2803</span>
               </a>
               <a 
-                href="mailto:shojahanaa@bondmetalsvalue.com"
+                href="mailto:shajahan@bondmetaluae.com"
                 className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer"
+                aria-label="Email us at shajahan@bondmetaluae.com"
               >
                 <Mail className="w-4 h-4 text-orange-500" />
-                <span>shojahanaa@bondmetalsvalue.com</span>
+                <span>shajahan@bondmetaluae.com</span>
               </a>
               <a 
-                href="https://maps.google.com/?q=Dubai+Industrial+Area,+UAE"
+                href="https://maps.app.goo.gl/uF63eECniBz9bYTQ7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer"
+                className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer group"
+                aria-label="View our location on Google Maps"
               >
-                <MapPin className="w-4 h-4 text-orange-500" />
-                <span>Dubai Industrial Area, UAE</span>
+                
+                
+              
               </a>
               <div className="flex items-center gap-3 text-gray-400">
                 <Clock className="w-4 h-4 text-orange-500" />
                 <span>Mon-Fri: 7AM-6PM, Sat: 8AM-2PM</span>
               </div>
             </div>
+
+           
           </div>
 
           {/* Quick Links */}
@@ -116,7 +121,7 @@ export default function Footer() {
 
           {/* Industries & Social */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Installation & Miantenance</h3>
+            <h3 className="text-white font-semibold text-lg mb-6">Installation & Maintenance</h3>
             <ul className="space-y-3 mb-8">
               {industries.map((industry, index) => (
                 <li key={index}>
@@ -135,13 +140,24 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-semibold mb-4">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="https://www.facebook.com/bondmetalfabricationllc" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300">
+                <a 
+                  href="https://www.facebook.com/bondmetalfabricationllc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"
+                  aria-label="Follow us on Facebook"
+                >
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="https://www.instagram.com/bond.metal/" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 transition-all duration-300">
+                <a 
+                  href="https://www.instagram.com/bond.metal/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 transition-all duration-300"
+                  aria-label="Follow us on Instagram"
+                >
                   <Instagram className="w-5 h-5" />
                 </a>
-              
               </div>
             </div>
           </div>
