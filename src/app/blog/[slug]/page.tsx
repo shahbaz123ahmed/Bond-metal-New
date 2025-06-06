@@ -2,7 +2,11 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
 
-const BlogPostClient = dynamic(() => import('./BlogPostClient'), { ssr: true })
+// Dynamic import for the client component
+const BlogPostClient = dynamic(() => import('./BlogPostClient'), { 
+  ssr: true,
+  loading: () => <div className="animate-pulse">Loading...</div>
+})
 
 interface ProjectDetails {
   duration: string
@@ -12,7 +16,7 @@ interface ProjectDetails {
   value: string
 }
 
-interface BlogPost {
+export interface BlogPost {
   id: number
   title: string
   slug: string
@@ -428,45 +432,41 @@ function getBlogPostBySlug(slug: string): BlogPost | null {
       comments: 15
     }
   ]
-
-  const post = blogPosts.find((post: BlogPost) => post.slug === slug)
-  return post || null
+  
+  return blogPosts.find(post => post.slug === slug) || null
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug)
+// Fix: Make params async in generateMetadata
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = getBlogPostBySlug(slug)
   
   if (!post) {
     return {
-      title: 'Post Not Found - Bond Metal BLOG',
+      title: 'Post Not Found',
       description: 'The requested blog post could not be found.'
     }
   }
 
   return {
-    title: `${post.title} - Bond Metal BLOG`,
+    title: post.title,
     description: post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      type: 'article',
-      publishedTime: post.publishDate,
-      authors: [post.author],
-      tags: post.tags,
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 630,
-          alt: post.title
-        }
-      ]
-    }
+      images: post.image ? [post.image] : [],
+    },
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getBlogPostBySlug(params.slug)
+// Fix: Make params async in the main component
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params
+  const post = getBlogPostBySlug(slug)
   
   if (!post) {
     notFound()

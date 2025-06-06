@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
@@ -105,7 +105,7 @@ const allBlogPosts: BlogPost[] = [
     author: 'Sarah Al Mansoori',
     publishDate: '2023-12-10',
     readTime: '6 min read',
-    image: '/images/bond5.webp',
+    image: '/images/acp-cladding.webp',
     tags: ['Fire Safety', 'ACP', 'Building Regulations', 'UAE Standards'],
     views: 1650,
     likes: 58,
@@ -113,7 +113,8 @@ const allBlogPosts: BlogPost[] = [
   }
 ]
 
-export default function BlogPage() {
+// Separate component that uses useSearchParams
+function BlogContent() {
   const searchParams = useSearchParams()
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
   const [activeCategory, setActiveCategory] = useState<string>('All Posts')
@@ -167,9 +168,7 @@ export default function BlogPage() {
   const recentPosts = allBlogPosts.slice(0, 3)
 
   return (
-    <main className="bg-slate-900 min-h-screen">
-      <Navbar />
-      
+    <>
       {/* Hero Section - Show filter status */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-900 z-10"></div>
@@ -553,9 +552,37 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 }
 
-// Remove this metadata export completely since this is a client component
-// If you need metadata, create a wrapper server component
+// Loading component for Suspense fallback
+function BlogLoading() {
+  return (
+    <div className="bg-slate-900 min-h-screen">
+      <Navbar />
+      <div className="pt-32 pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="animate-pulse">
+              <div className="h-8 bg-slate-700 rounded-lg mb-6 w-64 mx-auto"></div>
+              <div className="h-16 bg-slate-700 rounded-lg mb-6"></div>
+              <div className="h-6 bg-slate-700 rounded-lg w-96 mx-auto"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function BlogPage() {
+  return (
+    <main className="bg-slate-900 min-h-screen">
+      <Navbar />
+      <Suspense fallback={<BlogLoading />}>
+        <BlogContent />
+      </Suspense>
+    </main>
+  )
+}
