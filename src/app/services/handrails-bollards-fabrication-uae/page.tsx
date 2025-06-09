@@ -183,11 +183,9 @@ export default function HandrailsBollardsPage() {
                 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact" className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center">
-                    Get Site Assessment
+                    Get Qoute
                   </Link>
-                  <Link href="/portfolio" className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 text-center">
-                    View Portfolio
-                  </Link>
+                  
                 </div>
               </div>
 

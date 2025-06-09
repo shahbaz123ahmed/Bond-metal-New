@@ -175,7 +175,7 @@ function getBlogPostBySlug(slug: string): BlogPost | null {
         
         <p>With continuous innovation and an unwavering commitment to quality, Bond Metal remains at the cutting edge of ACP cladding evolution in the UAE construction landscape, delivering solutions that combine aesthetic excellence with world-class performance.</p>
       `,
-      tags: ['ACP', 'UAE Construction', 'Material Innovation', 'Fire Safety', 'Facade Systems'],
+      tags: ['ACP', 'UAE Construction', 'Material Innovation', 'Fire Safety', ],
       highlights: [
         'FR-rated panels exceeding UAE Fire Code requirements',
         'Custom curved panel fabrication',
@@ -310,7 +310,7 @@ function getBlogPostBySlug(slug: string): BlogPost | null {
       authorBio: 'Mohammed Ali brings over 18 years of experience in custom metal fabrication, specializing in bespoke solutions for high-profile architectural projects throughout the UAE and wider Middle East region.',
       publishDate: '2023-09-25',
       readTime: '5 min read',
-      image: '/images/bond8.webp',
+      image: '/images/bond4.webp',
       client: 'Dubai Properties',
       projectDetails: {
         duration: '6 months',
@@ -362,7 +362,7 @@ function getBlogPostBySlug(slug: string): BlogPost | null {
       authorBio: 'Sarah Al Mansoori specializes in advanced cladding systems and has managed over 40 major ACP installation projects across the UAE during her 12-year career.',
       publishDate: '2023-12-10',
       readTime: '6 min read',
-      image: '/images/bond5.webp',
+      image: '/images/fire1.jpg',
       client: 'Dubai Civil Defense',
       projectDetails: {
         duration: '8 months',

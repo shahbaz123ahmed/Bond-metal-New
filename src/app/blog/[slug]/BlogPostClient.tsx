@@ -94,14 +94,87 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Main Content */}
               <div className="lg:col-span-2">
-                <div 
-                  className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-orange-500 prose-strong:text-white prose-ul:text-gray-300 prose-ol:text-gray-300"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                {/* Custom styled content area */}
+                <div className="blog-content">
+                  <style jsx>{`
+                    .blog-content :global(h1) {
+                      color: 
+                      97316 !important;
+                      font-size: 2rem !important;
+                      font-weight: 700 !important;
+                      margin-bottom: 1.5rem !important;
+                      margin-top: 2rem !important;
+                      line-height: 1.2 !important;
+                    }
+                    .blog-content :global(h2) {
+                      color: #f97316 !important;
+                      font-size: 1.75rem !important;
+                      font-weight: 700 !important;
+                      margin-bottom: 1rem !important;
+                      margin-top: 2rem !important;
+                      line-height: 1.3 !important;
+                    }
+                    .blog-content :global(h3) {
+                      color: #fb923c !important;
+                      font-size: 1.5rem !important;
+                      font-weight: 600 !important;
+                      margin-bottom: 0.75rem !important;
+                      margin-top: 1.5rem !important;
+                      line-height: 1.4 !important;
+                    }
+                    .blog-content :global(p) {
+                      color: #d1d5db !important;
+                      line-height: 1.75 !important;
+                      margin-bottom: 1rem !important;
+                      font-size: 1rem !important;
+                    }
+                    .blog-content :global(ul) {
+                      color: #d1d5db !important;
+                      margin-bottom: 1.5rem !important;
+                      padding-left: 1.5rem !important;
+                    }
+                    .blog-content :global(ol) {
+                      color: #d1d5db !important;
+                      margin-bottom: 1.5rem !important;
+                      padding-left: 1.5rem !important;
+                    }
+                    .blog-content :global(li) {
+                      color: #d1d5db !important;
+                      margin-bottom: 0.5rem !important;
+                      line-height: 1.6 !important;
+                    }
+                    .blog-content :global(strong) {
+                      color: #ffffff !important;
+                      font-weight: 600 !important;
+                    }
+                    .blog-content :global(a) {
+                      color: #f97316 !important;
+                      text-decoration: none !important;
+                    }
+                    .blog-content :global(a:hover) {
+                      color: #fb923c !important;
+                    }
+                    .blog-content :global(blockquote) {
+                      color: #d1d5db !important;
+                      border-left: 4px solid #f97316 !important;
+                      padding-left: 1rem !important;
+                      margin: 1.5rem 0 !important;
+                      font-style: italic !important;
+                    }
+                    .blog-content :global(code) {
+                      color: #fb923c !important;
+                      background-color: #1e293b !important;
+                      padding: 0.25rem 0.5rem !important;
+                      border-radius: 0.25rem !important;
+                      font-size: 0.875rem !important;
+                    }
+                  `}</style>
+                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                </div>
 
                 {/* Tags */}
                 <div className="mt-12 pt-8 border-t border-slate-700">
-                  <h3 className="text-xl font-bold text-white mb-4">Tags</h3>
+                  <h3 className="text-xl font-bold text-orange-500 mb-4">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag, index) => (
                       <Link
@@ -136,7 +209,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                   {/* Project Details */}
                   {post.projectDetails && (
                     <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                      <h3 className="text-xl font-bold text-white mb-4">Project Details</h3>
+                      <h3 className="text-xl font-bold text-orange-500 mb-4">Project Details</h3>
                       <div className="space-y-3">
                         <div>
                           <span className="text-sm text-gray-400">Client:</span>
@@ -165,7 +238,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                   {/* Key Highlights */}
                   {post.highlights && (
                     <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                      <h3 className="text-xl font-bold text-white mb-4">Key Highlights</h3>
+                      <h3 className="text-xl font-bold text-orange-500 mb-4">Key Highlights</h3>
                       <ul className="space-y-2">
                         {post.highlights.map((highlight, index) => (
                           <li key={index} className="text-gray-300 text-sm flex items-start gap-2">
@@ -179,7 +252,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
 
                   {/* Article Stats */}
                   <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                    <h3 className="text-xl font-bold text-white mb-4">Article Stats</h3>
+                    <h3 className="text-xl font-bold text-orange-500 mb-4">Article Stats</h3>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -215,9 +288,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
       <section className="py-16 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Related Articles
-            </h2>
+            
             <div className="text-center">
               <Link 
                 href="/blog"

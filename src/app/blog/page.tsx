@@ -60,7 +60,7 @@ const allBlogPosts: BlogPost[] = [
     author: 'Sarah Al Mansoori',
     publishDate: '2023-10-02',
     readTime: '8 min read',
-    image: '/images/bond10.webp',
+    image: '/images/cladding-acp.jpg',
     tags: ['ACP', 'UAE Construction', 'Material Innovation'],
     views: 1870,
     likes: 64,
@@ -136,11 +136,20 @@ function BlogContent() {
     }
 
     if (tag && tag !== '') {
+      // Convert URL tag back to the format used in posts
       const tagName = tag.replace(/-/g, ' ')
+      
+      // Filter posts that have this exact tag (case-insensitive)
       filtered = filtered.filter(post => 
-        post.tags.some(postTag => postTag.toLowerCase().replace(/\s+/g, '-') === tag)
+        post.tags.some(postTag => 
+          postTag.toLowerCase().replace(/\s+/g, '-') === tag.toLowerCase()
+        )
       )
-      setActiveTag(tagName)
+      
+      // Set active tag for display (capitalize first letter of each word)
+      setActiveTag(tagName.split(' ').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' '))
     } else {
       setActiveTag('')
     }
@@ -344,14 +353,7 @@ function BlogContent() {
                 <div className="mt-8 pt-6 border-t border-slate-700">
                   <h3 className="text-xl font-bold text-white mb-6">Popular Tags</h3>
                   <div className="flex flex-wrap gap-2">
-                    <Link 
-                      href="/blog?tag=metal-fabrication" 
-                      className={`bg-slate-700 hover:bg-orange-500/20 text-gray-300 hover:text-orange-500 px-3 py-1 rounded-md text-sm transition-colors border border-transparent hover:border-orange-500/40 ${
-                        activeTag === 'metal fabrication' ? 'bg-orange-500/20 text-orange-500 border-orange-500/40' : ''
-                      }`}
-                    >
-                      Metal Fabrication
-                    </Link>
+                   
                     <Link 
                       href="/blog?tag=acp" 
                       className={`bg-slate-700 hover:bg-orange-500/20 text-gray-300 hover:text-orange-500 px-3 py-1 rounded-md text-sm transition-colors border border-transparent hover:border-orange-500/40 ${
@@ -361,12 +363,29 @@ function BlogContent() {
                       ACP
                     </Link>
                     <Link 
-                      href="/blog?tag=aluminium" 
+                      href="/blog?tag=aluminum-facade" 
                       className={`bg-slate-700 hover:bg-orange-500/20 text-gray-300 hover:text-orange-500 px-3 py-1 rounded-md text-sm transition-colors border border-transparent hover:border-orange-500/40 ${
-                        activeTag === 'aluminium' ? 'bg-orange-500/20 text-orange-500 border-orange-500/40' : ''
+                        activeTag === 'aluminum facade' ? 'bg-orange-500/20 text-orange-500 border-orange-500/40' : ''
                       }`}
                     >
-                      Aluminium
+                      Aluminum Facade
+                    </Link>
+                    
+                    <Link 
+                      href="/blog?tag=uae-construction" 
+                      className={`bg-slate-700 hover:bg-orange-500/20 text-gray-300 hover:text-orange-500 px-3 py-1 rounded-md text-sm transition-colors border border-transparent hover:border-orange-500/40 ${
+                        activeTag === 'uae construction' ? 'bg-orange-500/20 text-orange-500 border-orange-500/40' : ''
+                      }`}
+                    >
+                      UAE Construction
+                    </Link>
+                    <Link 
+                      href="/blog?tag=sustainability" 
+                      className={`bg-slate-700 hover:bg-orange-500/20 text-gray-300 hover:text-orange-500 px-3 py-1 rounded-md text-sm transition-colors border border-transparent hover:border-orange-500/40 ${
+                        activeTag === 'sustainability' ? 'bg-orange-500/20 text-orange-500 border-orange-500/40' : ''
+                      }`}
+                    >
+                      Sustainability
                     </Link>
                   </div>
                 </div>
@@ -541,13 +560,7 @@ function BlogContent() {
                 <ChevronRight className="w-4 h-4" />
               </Link>
               
-              <Link 
-                href="/services/fabrication"
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-lg font-semibold transition-all duration-300 inline-flex items-center gap-2"
-              >
-                Explore Our Services
-                <ChevronRight className="w-4 h-4" />
-              </Link>
+              
             </div>
           </div>
         </div>

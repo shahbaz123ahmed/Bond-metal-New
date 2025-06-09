@@ -191,14 +191,9 @@ export default function AluminiumCladdingPage() {
                     href="/contact"
                     className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center"
                   >
-                    Get Custom Quote
+                    Get Quote
                   </Link>
-                  <Link 
-                    href="/portfolio"
-                    className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 text-center"
-                  >
-                    View Portfolio
-                  </Link>
+                 
                 </div>
               </header>
 
@@ -405,14 +400,9 @@ export default function AluminiumCladdingPage() {
                 href="/contact"
                 className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center inline-block"
               >
-                Get Free Consultation
+                Get Quote
               </Link>
-              <Link 
-                href="/contact"
-                className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 inline-block text-center"
-              >
-                Request Quote
-              </Link>
+              
             </div>
           </div>
         </section>

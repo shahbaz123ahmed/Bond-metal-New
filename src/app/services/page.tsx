@@ -146,7 +146,7 @@ export default function ServicesPage() {
               href="/contact"
               className="inline-block bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
             >
-              Get Quote Now
+              Get Free Quote
             </Link>
           </div>
         </section>

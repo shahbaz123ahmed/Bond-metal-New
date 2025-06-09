@@ -8,6 +8,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState({
+    cladding: false,
+    fabrication: false,
+    projects: false,
+    installation: false
+  })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,8 +50,8 @@ export default function Navbar() {
     { name: 'Glass Fabrication In UAE', href: '/services/glass-fabrication.uae', description: 'Precision CNC services' },
     { name: 'Aluminium Fabrication Works In UAE', href: '/services/aluminium-fabrication-uae', description: 'Professional welding solutions' },
     { name: 'Handrails Fabrication', href: '/services/handrail-fabrication-uae', description: 'Safety and architectural handrails' },
-    { name: 'Bollard Design', href: '/services/bollard-design-uae', description: ' provide physical security ' },
-    { name: 'Fabrication and Installation of Handrails and Bollards. Dubai and Abu Dhabi', href: '/services/handrails-bollards-fabrication-uae', description: ' provide physical security ' },
+    { name: 'Bollard Design', href: '/services/bollard-design-uae', description: 'provide physical security' },
+    { name: 'Fabrication and Installation of Handrails and Bollards. Dubai and Abu Dhabi', href: '/services/handrails-bollards-fabrication-uae', description: 'provide physical security' },
     { name: 'Canopy Fabrication', href: '/services/canopy-fabrication-uae', description: 'Weather protection canopy solutions' },
     { name: 'Car Park Shade & Tensile Structures', href: '/services/car-park-shade-tensile-uae', description: 'UV protection parking solutions' },
     { name: 'Pergola Making', href: '/services/pergola-making-uae', description: 'Custom outdoor living structures' }
@@ -70,16 +76,11 @@ export default function Navbar() {
     setActiveDropdown(null)
   }
 
-  // Handle URL change only (no navigation)
-  const handleUrlChange = (url: string) => {
-    window.history.pushState({}, '', url)
-  }
-
-  // Handle arrow click to prevent navigation
-  const handleArrowClick = (e: React.MouseEvent, dropdown: string) => {
-    e.preventDefault()
-    e.stopPropagation()
-    handleDropdownClick(dropdown)
+  const toggleMobileDropdown = (dropdown: 'cladding' | 'fabrication' | 'projects' | 'installation') => {
+    setMobileDropdownOpen(prev => ({
+      ...prev,
+      [dropdown]: !prev[dropdown]
+    }))
   }
 
   return (
@@ -121,25 +122,17 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center space-x-8">
               {/* Cladding Dropdown */}
               <div className="relative dropdown-container">
-                <div className="flex items-center">
-                  <button 
-                    onClick={() => handleUrlChange('/services/cladding')}
-                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
-                  >
-                    Cladding
-                  </button>
-                  <button 
-                    onClick={(e) => handleArrowClick(e, 'cladding')}
-                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
-                    aria-expanded={activeDropdown === 'cladding'}
-                    aria-haspopup="true"
-                    aria-label="Show cladding services"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                      activeDropdown === 'cladding' ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-                </div>
+                <button 
+                  onClick={() => handleDropdownClick('cladding')}
+                  className="flex items-center text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  aria-expanded={activeDropdown === 'cladding'}
+                  aria-haspopup="true"
+                >
+                  Cladding
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'cladding' ? 'rotate-180' : ''
+                  }`} />
+                </button>
                 
                 {activeDropdown === 'cladding' && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -170,25 +163,17 @@ export default function Navbar() {
 
               {/* Fabrication Services Dropdown */}
               <div className="relative dropdown-container">
-                <div className="flex items-center">
-                  <button 
-                    onClick={() => handleUrlChange('/services/fabrication')}
-                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
-                  >
-                    Fabrication Services
-                  </button>
-                  <button 
-                    onClick={(e) => handleArrowClick(e, 'fabrication')}
-                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
-                    aria-expanded={activeDropdown === 'fabrication'}
-                    aria-haspopup="true"
-                    aria-label="Show fabrication services"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                      activeDropdown === 'fabrication' ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-                </div>
+                <button 
+                  onClick={() => handleDropdownClick('fabrication')}
+                  className="flex items-center text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  aria-expanded={activeDropdown === 'fabrication'}
+                  aria-haspopup="true"
+                >
+                  Fabrication Services
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'fabrication' ? 'rotate-180' : ''
+                  }`} />
+                </button>
                 
                 {activeDropdown === 'fabrication' && (
                   <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -219,25 +204,17 @@ export default function Navbar() {
 
               {/* Our Projects Dropdown */}
               <div className="relative dropdown-container">
-                <div className="flex items-center">
-                  <button 
-                    onClick={() => handleUrlChange('/services/projects')}
-                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
-                  >
-                    Our Projects
-                  </button>
-                  <button 
-                    onClick={(e) => handleArrowClick(e, 'projects')}
-                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
-                    aria-expanded={activeDropdown === 'projects'}
-                    aria-haspopup="true"
-                    aria-label="Show project categories"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                      activeDropdown === 'projects' ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-                </div>
+                <button 
+                  onClick={() => handleDropdownClick('projects')}
+                  className="flex items-center text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  aria-expanded={activeDropdown === 'projects'}
+                  aria-haspopup="true"
+                >
+                  Our Projects
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'projects' ? 'rotate-180' : ''
+                  }`} />
+                </button>
                 
                 {activeDropdown === 'projects' && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -268,25 +245,17 @@ export default function Navbar() {
 
               {/* Installation & Maintenance Dropdown */}
               <div className="relative dropdown-container">
-                <div className="flex items-center">
-                  <button 
-                    onClick={() => handleUrlChange('/services/installation')}
-                    className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
-                  >
-                    Installation & Maintenance
-                  </button>
-                  <button 
-                    onClick={(e) => handleArrowClick(e, 'installation')}
-                    className="ml-1 p-1 text-slate-700 hover:text-orange-500 transition-colors duration-200"
-                    aria-expanded={activeDropdown === 'installation'}
-                    aria-haspopup="true"
-                    aria-label="Show installation services"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                      activeDropdown === 'installation' ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-                </div>
+                <button 
+                  onClick={() => handleDropdownClick('installation')}
+                  className="flex items-center text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
+                  aria-expanded={activeDropdown === 'installation'}
+                  aria-haspopup="true"
+                >
+                  Installation & Maintenance
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'installation' ? 'rotate-180' : ''
+                  }`} />
+                </button>
                 
                 {activeDropdown === 'installation' && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50">
@@ -328,14 +297,6 @@ export default function Navbar() {
               >
                 Contact Us
               </Link>
-
-              {/* Blog Link */}
-              <Link 
-                href="/blog" 
-                className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
-              >
-                Blog
-              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -358,92 +319,112 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-200">
             <div className="px-4 py-6 space-y-4">
+              {/* Cladding Mobile Dropdown */}
               <div className="space-y-2">
                 <button
-                  onClick={() => {
-                    handleUrlChange('/services/cladding')
-                    setIsMobileMenuOpen(false)
-                  }}
-                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                  onClick={() => toggleMobileDropdown('cladding')}
+                  className="flex justify-between items-center w-full font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200"
                 >
                   Cladding
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileDropdownOpen.cladding ? 'rotate-180' : ''
+                  }`} />
                 </button>
-                {claddingServices.map((service) => (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {service.name}
-                  </Link>
-                ))}
+                {mobileDropdownOpen.cladding && (
+                  <div className="pl-4 space-y-1">
+                    {claddingServices.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="block text-slate-600 hover:text-orange-500 py-1 transition-colors duration-200"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
+              {/* Fabrication Mobile Dropdown */}
               <div className="space-y-2">
                 <button
-                  onClick={() => {
-                    handleUrlChange('/services/fabrication')
-                    setIsMobileMenuOpen(false)
-                  }}
-                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                  onClick={() => toggleMobileDropdown('fabrication')}
+                  className="flex justify-between items-center w-full font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200"
                 >
                   Fabrication Services
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileDropdownOpen.fabrication ? 'rotate-180' : ''
+                  }`} />
                 </button>
-                {fabricationServices.map((service) => (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {service.name}
-                  </Link>
-                ))}
+                {mobileDropdownOpen.fabrication && (
+                  <div className="pl-4 space-y-1 max-h-60 overflow-y-auto">
+                    {fabricationServices.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="block text-slate-600 hover:text-orange-500 py-1 transition-colors duration-200 text-sm"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
+              {/* Projects Mobile Dropdown */}
               <div className="space-y-2">
                 <button
-                  onClick={() => {
-                    handleUrlChange('/services/projects')
-                    setIsMobileMenuOpen(false)
-                  }}
-                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                  onClick={() => toggleMobileDropdown('projects')}
+                  className="flex justify-between items-center w-full font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200"
                 >
                   Our Projects
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileDropdownOpen.projects ? 'rotate-180' : ''
+                  }`} />
                 </button>
-                {projectCategories.map((category) => (
-                  <Link
-                    key={category.href}
-                    href={category.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {category.name}
-                  </Link>
-                ))}
+                {mobileDropdownOpen.projects && (
+                  <div className="pl-4 space-y-1">
+                    {projectCategories.map((category) => (
+                      <Link
+                        key={category.href}
+                        href={category.href}
+                        className="block text-slate-600 hover:text-orange-500 py-1 transition-colors duration-200"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
+              {/* Installation Mobile Dropdown */}
               <div className="space-y-2">
                 <button
-                  onClick={() => {
-                    handleUrlChange('/services/installation')
-                    setIsMobileMenuOpen(false)
-                  }}
-                  className="block font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200 w-full text-left"
+                  onClick={() => toggleMobileDropdown('installation')}
+                  className="flex justify-between items-center w-full font-medium text-slate-900 py-2 hover:text-orange-500 transition-colors duration-200"
                 >
                   Installation & Maintenance
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileDropdownOpen.installation ? 'rotate-180' : ''
+                  }`} />
                 </button>
-                {installationServices.map((service) => (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className="block text-slate-600 hover:text-orange-500 py-1 pl-4 transition-colors duration-200"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {service.name}
-                  </Link>
-                ))}
+                {mobileDropdownOpen.installation && (
+                  <div className="pl-4 space-y-1">
+                    {installationServices.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="block text-slate-600 hover:text-orange-500 py-1 transition-colors duration-200"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <Link 
@@ -461,8 +442,6 @@ export default function Navbar() {
               >
                 Contact Us
               </Link>
-
-          
             </div>
           </div>
         )}
