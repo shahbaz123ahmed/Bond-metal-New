@@ -229,7 +229,7 @@ export default function ACPCladdingWorksPage() {
                       href="/contact"
                       className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center"
                     >
-                      Get ACP Cladding Quote
+                      Get Quote
                     </Link>
                    
                   </div>
@@ -238,7 +238,7 @@ export default function ACPCladdingWorksPage() {
                 {/* Replace stats section with image */}
                 <div className="relative">
                   <Image 
-                    src="/images/cladding.jpg"
+                    src="/images/claddinguae.jpg"
                     alt="Professional ACP Cladding Works in UAE - Aluminum Composite Panel Installation" 
                     width={600}
                     height={500}

@@ -282,7 +282,7 @@ export default function PergolaMakingPage() {
               {/* Replace stats section with image */}
               <div className="relative">
                 <Image 
-                  src="/images/pergola.jpeg"
+                  src="/images/pergola2.jpeg"
                   alt="Professional Pergola Making Dubai and Abu Dhabi - Outdoor Living Construction" 
                   width={600}
                   height={400}
@@ -588,14 +588,9 @@ export default function PergolaMakingPage() {
                 href="/contact"
                 className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center inline-block"
               >
-                Get Design Consultation
+                Get Quote
               </Link>
-              <Link 
-                href="/contact"
-                className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 inline-block text-center"
-              >
-                Request Quote
-              </Link>
+              
             </div>
           </div>
         </section>

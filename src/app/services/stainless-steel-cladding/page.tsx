@@ -403,14 +403,9 @@ export default function StainlessSteelCladdingPage() {
                 href="/contact"
                 className="bg-white text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 text-center"
               >
-                Get Started Now
+                Get Quote
               </Link>
-              <Link 
-                href="/portfolio"
-                className="border-2 border-white text-white hover:bg-white hover:text-orange-500 px-8 py-4 rounded-full font-semibold transition-all duration-300 text-center"
-              >
-                View Our Work
-              </Link>
+              
             </div>
           </div>
         </section>

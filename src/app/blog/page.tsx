@@ -183,7 +183,7 @@ function BlogContent() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-900 z-10"></div>
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="/images/blog/blog-pattern-bg.jpg"
+            src="/images/blog/"
             alt="Background Pattern"
             fill
             className="object-cover"

@@ -236,7 +236,7 @@ export default function GlassFabricationPage() {
                     href="/contact"
                     className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center"
                   >
-                    Get Custom Quote
+                    Get Quote
                   </Link>
                   
                 </div>
